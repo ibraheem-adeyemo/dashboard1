@@ -3,9 +3,9 @@
 
 import { Menu } from "lucide-react";
 
-export const Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
+export const  Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   return (
-    <header className="h-16 border-b border-gray-200 flex items-center justify-between px-6 bg-white sticky top-0 z-50">
+    <header className="h-[5rem] border-b border-gray-200 flex items-center justify-between py-6 px-6 bg-white sticky top-0 z-50">
       <button
         className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
         onClick={toggleSidebar}
