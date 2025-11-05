@@ -4,10 +4,10 @@ import Link from "next/link";
 
 const SidebarLogo = () => {
   return (
-    <div className="flex h-[5rem] items-center justify-center py-6 border-b border-r border-gray-200">
+    <div className="flex h-[5rem] items-center justify-center py-6 text-text-primary">
       <Link href="/" className="flex items-center space-x-2">
         <Image src="/images/logo.png" alt="Logo" width={40} height={40} />
-        <span className="text-xl font-bold text-gray-800">MyApp</span>
+        <span className="text-xl font-bold">MyApp</span>
       </Link>
     </div>
   );

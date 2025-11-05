@@ -3,6 +3,7 @@
 import { Sidebar } from "../sidebar/index";
 import { Navbar } from "../Navbar";
 import { useState } from "react";
+import Header from "../header/Header";
 
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
@@ -33,14 +34,15 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         
       </div>
       <div className="flex flex-col w-full">
-          <Navbar toggleSidebar={() => setSidebarOpen((s) => !s)} />
+          <Header toggleSidebar={() => setSidebarOpen((s) => !s)} />
+          {/* <Navbar toggleSidebar={() => setSidebarOpen((s) => !s)} /> */}
         {/* Main content area */}      
 
-          <main className="flex-1 px-6 py-6">
+          <main className="flex-1 px-6 py-6 text-text-primary">
             {children}
           </main>
 
-          <footer className="border-t border-gray-200 text-center py-4 text-sm text-gray-500">
+          <footer className="border-t border-[var(--neutral-border)] text-center py-4 text-sm text-gray-500">
             © {new Date().getFullYear()} MyApp. All rights reserved.
           </footer>
         </div>  

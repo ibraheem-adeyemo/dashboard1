@@ -1,5 +1,6 @@
 import './globals.css'
 import Providers from './providers'
+import type { Metadata } from "next";
 
 export const metadata = {
   title: 'Next.js Boilerplate',

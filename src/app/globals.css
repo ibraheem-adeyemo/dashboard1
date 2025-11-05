@@ -27,7 +27,7 @@
   --icon-color: rgba(53, 63, 80, 1);
 
   /* Surface/background colors */
-  --surface-primary: rgba(255, 255, 255, 1);
+  --surface-primary: rgb(243, 239, 239);
   --surface-secondary: rgba(249, 251, 252, 1);
   --surface-modal: rgba(255, 255, 255, 1);
   --surface-white: rgba(255, 255, 255, 1);
@@ -148,21 +148,6 @@
     --neutral-bg: #ffffff;
     --neutral-border: #ffffff;
 
-    --dark-gray-0: #000000;
-    --dark-gray-100: #0f0f12;
-    --dark-gray-200: #1e1e24;
-    --dark-gray-300: #2c2c35;
-    --dark-gray-400: #64646f;
-    --dark-gray-500: #8b8b93;
-    --dark-gray-600: #70707c;
-    --dark-gray-700: #8a8a98;
-    --dark-gray-800: #a9a9b7;
-    --dark-gray-900: #d0d0da;
-    --dark-gray-1000: #eaeaf4;
-    --dark-gray-1100: #f1f1f1;
-    --dark-neutral-bg: #1f2128;
-    --dark-neutral-border: #313442;
-
     /* froxyy */
   .logo-container {
     position: relative;
@@ -276,6 +261,24 @@
     --selection-color: ;
     --skeleton-primary: rgba(0, 0, 0, 1);
 
+    /* froxyyy */
+
+     --gray-0: #000000;
+    --gray-100: #0f0f12;
+    --gray-200: #1e1e24;
+    --gray-300: #2c2c35;
+    --gray-400: #64646f;
+    --gray-500: #8b8b93;
+    --gray-600: #70707c;
+    --gray-700: #8a8a98;
+    --gray-800: #a9a9b7;
+    --gray-900: #d0d0da;
+    --gray-1000: #eaeaf4;
+    --gray-1100: #f1f1f1;
+    --neutral-bg: #1f2128;
+    --neutral-border: #313442;
+
+    /* froxyy */
     .dark-logo {
       display: block;
     }
@@ -286,7 +289,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--gray-100);
   color: var(--foreground);
   font-feature-settings:
     'liga' off,

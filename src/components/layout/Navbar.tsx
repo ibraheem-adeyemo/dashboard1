@@ -5,7 +5,7 @@ import { Menu } from "lucide-react";
 
 export const  Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   return (
-    <header className="h-[5rem] border-b border-gray-200 flex items-center justify-between py-6 px-6 bg-white sticky top-0 z-50">
+    <header className="h-[5rem] border-b border-[var(--neutral-border)] text-text-primary flex items-center justify-between py-6 px-6 bg-neutral-bg sticky top-0 z-50">
       <button
         className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
         onClick={toggleSidebar}
@@ -14,7 +14,7 @@ export const  Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
       </button>
       <h1 className="text-lg font-semibold">Dashboard</h1>
       <div className="flex items-center space-x-4">
-        <span className="text-gray-600 text-sm">Hello, Ibraheem 👋</span>
+        <span className="text-sm">Hello, Ibraheem 👋</span>
       </div>
     </header>
   );
