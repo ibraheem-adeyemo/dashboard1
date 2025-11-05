@@ -1,11 +1,11 @@
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
 beforeAll(() => {
-  Object.defineProperty(window, 'matchMedia', {
+  Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: jest.fn().mockImplementation((query) => ({
       matches: false,
@@ -20,9 +20,9 @@ beforeAll(() => {
   });
 });
 
-jest.mock('next-themes', () => ({
+jest.mock("next-themes", () => ({
   useTheme: () => ({
-    theme: 'light',
+    theme: "light",
     setTheme: jest.fn(),
   }),
 }));

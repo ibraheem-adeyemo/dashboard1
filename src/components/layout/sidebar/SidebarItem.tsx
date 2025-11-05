@@ -18,14 +18,21 @@ const SidebarItem = ({ item }: { item: SidebarItemType }) => {
       >
         <Icon className="mr-3 text-text-primary text-lg" />
         {item.href ? (
-          <Link href={item.href} className="flex-1 text-text-primary font-medium">
+          <Link
+            href={item.href}
+            className="flex-1 text-text-primary font-medium"
+          >
             {item.label}
           </Link>
         ) : (
-          <span className="flex-1 text-text-primary font-medium">{item.label}</span>
+          <span className="flex-1 text-text-primary font-medium">
+            {item.label}
+          </span>
         )}
         {item.submenu && (
-          <span className="ml-auto text-sm text-gray-500">{open ? "−" : "+"}</span>
+          <span className="ml-auto text-sm text-gray-500">
+            {open ? "−" : "+"}
+          </span>
         )}
       </button>
 

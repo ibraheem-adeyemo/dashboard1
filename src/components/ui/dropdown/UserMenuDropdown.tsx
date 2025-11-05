@@ -24,7 +24,9 @@ const UserMenuDropdown = () => {
     >
       <DropdownItem href="/profile">Profile</DropdownItem>
       <DropdownItem href="/settings">Settings</DropdownItem>
-      <DropdownItem onClick={() => alert("Logging out...")}>Logout</DropdownItem>
+      <DropdownItem onClick={() => alert("Logging out...")}>
+        Logout
+      </DropdownItem>
     </Dropdown>
   );
 };

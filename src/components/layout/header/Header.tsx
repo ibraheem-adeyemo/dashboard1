@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
@@ -18,30 +17,29 @@ const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
       <div className="flex items-center w-full justify-between px-4 py-2 md:px-6">
         {/* Left section */}
         <div>
-            <button
+          <button
             className="md:hidden p-2 hover:bg-gray-100 rounded-lg"
             onClick={toggleSidebar}
-        >
+          >
             <Menu className="h-6 w-6 text-gray-700" />
-        </button>
-        <div className="flex items-center gap-4">          
-
-          {/* Logo */}
-          <div className="hidden">
-            <Link href="/" className="flex items-center gap-2">
-            <Image
-              src="/images/logo.png"
-              alt="Logo"
-              width={32}
-              height={32}
-              priority
-            />
-            <span className="font-semibold text-lg text-gray-800 dark:text-gray-100">
-              MyApp
-            </span>
-          </Link>
+          </button>
+          <div className="flex items-center gap-4">
+            {/* Logo */}
+            <div className="hidden">
+              <Link href="/" className="flex items-center gap-2">
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo"
+                  width={32}
+                  height={32}
+                  priority
+                />
+                <span className="font-semibold text-lg text-gray-800 dark:text-gray-100">
+                  MyApp
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
         </div>
 
         {/* Middle section */}
@@ -61,7 +59,6 @@ const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
           <UserMenuDropdown />
         </div>
       </div>
-
     </header>
   );
 };

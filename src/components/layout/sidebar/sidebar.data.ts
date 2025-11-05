@@ -1,6 +1,11 @@
 // src/components/layout/Sidebar/sidebar.data.ts
 import { IconType } from "react-icons";
-import { FaTachometerAlt, FaShoppingCart, FaChartPie, FaEnvelope } from "react-icons/fa";
+import {
+  FaTachometerAlt,
+  FaShoppingCart,
+  FaChartPie,
+  FaEnvelope,
+} from "react-icons/fa";
 
 export interface SubMenuItem {
   label: string;

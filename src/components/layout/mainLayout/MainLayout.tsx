@@ -1,10 +1,8 @@
 "use client";
 
 import { Sidebar } from "../sidebar/index";
-import { Navbar } from "../Navbar";
 import { useState } from "react";
 import Header from "../header/Header";
-
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -13,10 +11,10 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen flex text-gray-900">
       <div className="flex">
         {/* Desktop sidebar: always visible on md+ */}
-            <div className="hidden md:block">
-                <Sidebar />
-            </div>
-            
+        <div className="hidden md:block">
+          <Sidebar />
+        </div>
+
         {/* Mobile sidebar: shown when sidebarOpen is true */}
         {sidebarOpen && (
           <>
@@ -31,24 +29,20 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </>
         )}
-        
       </div>
       <div className="flex flex-col w-full">
-          <Header toggleSidebar={() => setSidebarOpen((s) => !s)} />
-          {/* <Navbar toggleSidebar={() => setSidebarOpen((s) => !s)} /> */}
-        {/* Main content area */}      
+        <Header toggleSidebar={() => setSidebarOpen((s) => !s)} />
+        {/* <Navbar toggleSidebar={() => setSidebarOpen((s) => !s)} /> */}
+        {/* Main content area */}
 
-          <main className="flex-1 px-6 py-6 text-text-primary">
-            {children}
-          </main>
+        <main className="flex-1 px-6 py-6 text-text-primary">{children}</main>
 
-          <footer className="border-t border-[var(--neutral-border)] text-center py-4 text-sm text-gray-500">
-            © {new Date().getFullYear()} MyApp. All rights reserved.
-          </footer>
-        </div>  
+        <footer className="border-t border-[var(--neutral-border)] text-center py-4 text-sm text-gray-500">
+          © {new Date().getFullYear()} MyApp. All rights reserved.
+        </footer>
+      </div>
     </div>
   );
 };
 
 export default MainLayout;
-

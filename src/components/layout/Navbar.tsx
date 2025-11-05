@@ -3,7 +3,7 @@
 
 import { Menu } from "lucide-react";
 
-export const  Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
+export const Navbar = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   return (
     <header className="h-[5rem] border-b border-[var(--neutral-border)] text-text-primary flex items-center justify-between py-6 px-6 bg-neutral-bg sticky top-0 z-50">
       <button

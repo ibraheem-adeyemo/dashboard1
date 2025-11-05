@@ -1,22 +1,22 @@
-const nextJest = require('next/jest');
+const nextJest = require("next/jest");
 
 /** @type {import('jest').Config} */
 const createJestConfig = nextJest({
-  dir: './',
+  dir: "./",
 });
 
 const config = {
   // Use jsdom for React component testing
-  testEnvironment: 'jsdom',
+  testEnvironment: "jsdom",
 
   // Clear mocks before each test
   clearMocks: true,
 
   // Collect coverage for SonarQube
   collectCoverage: true,
-  coverageDirectory: 'coverage',
-  coverageReporters: ['lcov', 'text'],
-  coverageProvider: 'v8',
+  coverageDirectory: "coverage",
+  coverageReporters: ["lcov", "text"],
+  coverageProvider: "v8",
   coverageThreshold: {
     global: {
       branches: 85,
@@ -26,40 +26,40 @@ const config = {
     },
   },
   // Ignore irrelevant files for coverage
-  coveragePathIgnorePatterns: ['/node_modules/', '/coverage/', '/__tests__/'],
+  coveragePathIgnorePatterns: ["/node_modules/", "/coverage/", "/__tests__/"],
 
   // Collect coverage from source files in src/
   collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!**/*.test.{ts,tsx}',
-    '!**/*.spec.{ts,tsx}',
-    '!**/__tests__/**',
-    '!**/node_modules/**',
-    '!**/coverage/**',
+    "src/**/*.{ts,tsx}",
+    "!**/*.test.{ts,tsx}",
+    "!**/*.spec.{ts,tsx}",
+    "!**/__tests__/**",
+    "!**/node_modules/**",
+    "!**/coverage/**",
   ],
 
   // Handle TypeScript and JavaScript files
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(js|jsx)$": "babel-jest",
   },
 
   // Map Next.js module aliases and mock assets
   moduleNameMapper: {
-    '@/(.*)$': '<rootDir>/src/$1',
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.(jpg|jpeg|png|gif|svg)$': '<rootDir>/__mocks__/fileMock.js',
+    "@/(.*)$": "<rootDir>/src/$1",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/__mocks__/fileMock.js",
   },
 
   // Match test files for sonar.test.inclusions
-  testMatch: ['**/?(*.)+(spec|test).[jt]s?(x)'],
+  testMatch: ["**/?(*.)+(spec|test).[jt]s?(x)"],
 
   // Ignore build and node_modules for tests
-  testPathIgnorePatterns: ['/node_modules/', '/build/', '/dist/'],
+  testPathIgnorePatterns: ["/node_modules/", "/build/", "/dist/"],
 
   // Setup file for jest-dom matchers
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
 
   // Increase timeout for CI stability
   testTimeout: 60000,
