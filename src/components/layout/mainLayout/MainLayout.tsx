@@ -9,7 +9,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="min-h-screen flex text-gray-900">
-      <div className="flex">
+      <div className="flex fixed z-10">
         {/* Desktop sidebar: always visible on md+ */}
         <div className="hidden md:block">
           <Sidebar />
@@ -24,13 +24,13 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
               onClick={() => setSidebarOpen(false)}
               aria-hidden="true"
             />
-            <div className="fixed inset-y-0 left-0 w-64 z-50 md:hidden">
+            <div className="stick inset-y-0 left-0 w-64 z-50 md:hidden ">
               <Sidebar />
             </div>
           </>
         )}
       </div>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full md:pl-80 ">
         <Header toggleSidebar={() => setSidebarOpen((s) => !s)} />
         {/* <Navbar toggleSidebar={() => setSidebarOpen((s) => !s)} /> */}
         {/* Main content area */}

@@ -8,7 +8,7 @@ import SidebarLogo from "./SidebarLogo";
 
 const Sidebar = () => {
   return (
-    <aside className="w-80 bg-neutral-bg text-text-primary h-screen border-r border-[var(--neutral-border)] shadow-md left-0 top-0 flex flex-col">
+    <aside className="w-80 bg-neutral-bg stick text-text-primary h-screen border-r border-[var(--neutral-border)] shadow-md left-0 top-0 flex flex-col">
       <SidebarLogo />
 
       <nav className="flex-1 overflow-y-auto p-4">
