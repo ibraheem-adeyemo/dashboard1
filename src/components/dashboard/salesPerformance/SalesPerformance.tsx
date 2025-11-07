@@ -31,7 +31,7 @@ export const StackedAreaChart = () => {
     <AreaChart
       style={{
         width: "100%",
-        maxHeight: "70vh",
+        maxHeight: "400px",
         aspectRatio: 1.618,
       }}
       responsive

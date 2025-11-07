@@ -30,7 +30,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
           </>
         )}
       </div>
-      <div className="flex flex-col w-full md:pl-80 ">
+      <div className="flex flex-col w-full md:pl-60 ">
         <Header toggleSidebar={() => setSidebarOpen((s) => !s)} />
         {/* <Navbar toggleSidebar={() => setSidebarOpen((s) => !s)} /> */}
         {/* Main content area */}

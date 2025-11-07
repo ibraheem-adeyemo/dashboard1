@@ -25,21 +25,15 @@ export default function SellerCard({ seller }: SellerCardProps) {
           />
         </div>
         <div>
-          <p className="text-normal text-gray-1100 dark:text-gray-dark-1100 mb-1">
-            {seller.name}
-          </p>
-          <p className="text-desc text-gray-400 dark:text-gray-dark-400">
-            {seller.company}
-          </p>
+          <p className="text-sm text-gray-1100 mb-1">{seller.name}</p>
+          <p className="text-[10px] text-gray-400">{seller.company}</p>
         </div>
       </div>
       <div className="text-right">
-        <p className="text-normal font-semibold text-gray-1100 dark:text-gray-dark-1100 mb-1">
+        <p className="text-sm font-semibold text-gray-1100 mb-1">
           ${seller.amount.toFixed(2)}
         </p>
-        <p className="text-desc text-gray-400 dark:text-gray-dark-400">
-          {seller.sales} sales
-        </p>
+        <p className="text-[10px] text-gray-400">{seller.sales} sales</p>
       </div>
     </div>
   );

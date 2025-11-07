@@ -7,9 +7,9 @@ const BrowseDropdown = () => {
   return (
     <Dropdown
       trigger={
-        <button className="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">
+        <span className="text-gray-600 dark:text-gray-300 hover:text-primary font-medium">
           Browse
-        </button>
+        </span>
       }
       align="left"
     >

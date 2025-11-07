@@ -5,6 +5,7 @@ import {
   FaShoppingCart,
   FaChartPie,
   FaEnvelope,
+  FaMoneyBill,
 } from "react-icons/fa";
 
 export interface SubMenuItem {
@@ -24,6 +25,11 @@ export const sidebarData: SidebarItem[] = [
     label: "Dashboard",
     href: "/dashboard",
     icon: FaTachometerAlt,
+  },
+  {
+    label: "Financial",
+    href: "/dashboard/financial",
+    icon: FaMoneyBill,
   },
   {
     label: "Ecommerce",

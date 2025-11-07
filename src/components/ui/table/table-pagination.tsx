@@ -1,8 +1,8 @@
 import React from "react";
 import { Table } from "@tanstack/react-table";
-import { ArrowLeft, ArrowRight } from "@/assets/icons/dashboard-icons";
 import { Skeleton } from "@mui/material";
 import { CustomSelect } from "../select/custom-select";
+import { ArrowLeft, ArrowRight } from "@/assets/icons/dashboardIcons";
 
 type PaginationFooterProps<T> = {
   table: Table<T>;

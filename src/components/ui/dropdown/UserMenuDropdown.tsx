@@ -8,7 +8,7 @@ const UserMenuDropdown = () => {
   return (
     <Dropdown
       trigger={
-        <button className="flex items-center gap-2 focus:outline-none">
+        <span className="flex items-center gap-2 focus:outline-none">
           <Image
             src="/images/avatar.jpg"
             alt="User"
@@ -19,7 +19,7 @@ const UserMenuDropdown = () => {
           <span className="hidden md:inline text-gray-700 dark:text-gray-200 font-medium">
             Ibraheem
           </span>
-        </button>
+        </span>
       }
     >
       <DropdownItem href="/profile">Profile</DropdownItem>

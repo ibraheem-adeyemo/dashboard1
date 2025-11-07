@@ -7,7 +7,7 @@ const MessageDropdown = () => {
   return (
     <Dropdown
       trigger={
-        <button
+        <span
           className="relative text-gray-600 dark:text-gray-300 hover:text-primary"
           aria-label="Messages"
         >
@@ -27,7 +27,7 @@ const MessageDropdown = () => {
           <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
             3
           </span>
-        </button>
+        </span>
       }
     >
       <DropdownItem href="/messages/1">New message from John</DropdownItem>

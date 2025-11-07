@@ -44,7 +44,7 @@ const crudSlice = createSlice({
 export const { setTableStateItem, clearTableStateItem } = crudSlice.actions;
 
 export const selectTableData = (state: RootState): TableState => {
-  return state.table.tableItem;
+  return state.table?.tableItem;
 };
 
 export default crudSlice.reducer;
