@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Financials from "@/pages/Dashboard/Financial";
 import React from "react";
