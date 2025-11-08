@@ -8,7 +8,7 @@ import { ExpensesCard } from "@/components/ui/cards/ExpensesCard";
 import { BestSellersCard } from "@/components/ui/cards/BestSellersCard";
 import CategoryStatsCard from "@/components/ui/cards/CategoryStatsCard";
 import { categoryData } from "@/redux/store";
-import { CreditCardSection } from "@/components/ui/cards/CreditCardSection";
+import CreditCardSection from "@/components/ui/cards/CreditCardSection";
 
 const sampleData = [
   { value: 40 },
@@ -62,12 +62,16 @@ const Financials = () => {
         <BestSellersCard />
       </div>
       <div>
-        <div className="min-h-screen bg-gray-950 py-10">
-          <CategoryStatsCard title="Categories Static" data={categoryData} />
-          <CreditCardSection
-            imageSrc="/images/credit-card-placeholder.png"
-            onButtonClick={() => console.log("clicked")}
-          />
+        <div className="min-h-screen bg-gray-950 py-10 flex flex-col md:flex-row gap-6 ">
+          <div className="md:w-3/5 w-full">
+            <CategoryStatsCard title="Categories Static" data={categoryData} />
+          </div>
+          <div className="md:w-2/5 w-full">
+            <CreditCardSection
+              imageSrc="/images/credit-card-placeholder.png"
+              onButtonClick={() => console.log("clicked")}
+            />
+          </div>
         </div>
       </div>
     </div>

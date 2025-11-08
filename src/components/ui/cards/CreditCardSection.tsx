@@ -1,27 +1,28 @@
 import Image from "next/image";
 import React from "react";
 
-interface CreditCardProps {}
 const CreditCardSection = ({
   title = "Credit Card",
   imageSrc,
-  buttonText,
+  buttonText = "Add new card",
   onButtonClick,
 }) => {
   return (
-    <div className="rounded-2xl border border-gray-700 bg-gray-900 p-6 mb-4">
+    <div className="rounded-2xl border border-gray-700 bg-gray-900 p-3 mb-4">
       {/* Title */}
-      <div className="mb-6">
+      <div className="mb-3">
         <div className="flex items-center justify-between mb-3">
           <p className="text-sm font-semibold text-gray-400">{title}</p>
         </div>
 
         {/* Image */}
-        <div className="w-full mb-6">
+        <div className="w-full mb-2">
           <Image
             src={imageSrc}
             alt="credit card"
-            className="w-full h-full object-cover rounded-lg"
+            width={150}
+            height={70}
+            className="w-[100%] h-[18rem] object-cover rounded-lg"
           />
         </div>
 
@@ -30,9 +31,11 @@ const CreditCardSection = ({
           onClick={onButtonClick}
           className="transition-all duration-300 border-4 border-transparent bg-indigo-500 hover:bg-indigo-500 hover:border-indigo-300 text-white font-medium px-6 py-3 rounded-lg text-sm"
         >
-          {buttonText || "+ Add New Card"}
+          {buttonText}
         </button>
       </div>
     </div>
   );
 };
+
+export default CreditCardSection;

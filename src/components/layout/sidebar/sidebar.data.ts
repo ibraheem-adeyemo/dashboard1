@@ -35,7 +35,7 @@ export const sidebarData: SidebarItem[] = [
     label: "Ecommerce",
     icon: FaShoppingCart,
     submenu: [
-      { label: "Products", href: "/ecommerce/products" },
+      { label: "Products", href: "/dashboard/ecommerce/products" },
       { label: "Orders", href: "/ecommerce/orders" },
       { label: "Customers", href: "/ecommerce/customers" },
     ],
