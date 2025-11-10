@@ -5,6 +5,16 @@ export type ButtonProps = React.DetailedHTMLProps<
   HTMLButtonElement
 >;
 
+export type InputProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+export type TextAreaProps = React.DetailedHTMLProps<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+>;
+
 export type CustomButtonProps = {
   text: string | React.ReactNode;
   isLoading?: boolean;
@@ -16,6 +26,10 @@ interface BaseSelectFieldProps {
   onChange: (value: OptionProp | OptionProp[]) => void;
 }
 
+type BasePasswordFieldProps = {
+    hasStrengthMeter?: boolean;
+};
+
 export type CustomLabelProps = {
   error?: string;
   label: string;
@@ -24,6 +38,8 @@ export type CustomLabelProps = {
   icon?: string;
   className?: string;
   shouldBold?: boolean;
+  fieldHasBorder?: boolean;
+  borderStyling?: string;
   hasRequiredStar?: boolean;
 };
 
@@ -52,3 +68,38 @@ export interface SelectFieldProps extends BaseSelectFieldProps {
   className?: string;
   value?: OptionProp;
 }
+
+export type CustomInputProps = {
+    preAppend?: React.ReactNode;
+    postAppend?: React.ReactNode;
+    isLoading?: boolean;
+    error?: string | ReactNode;
+    inputType?: 'string' | 'number' | 'currency' | 'password';
+    forgotPassword?: boolean;
+    inputProps?:InputProps;
+  } & Omit<InputProps, 'size'> &
+    Omit<CustomLabelProps, 'label' | 'error'>;
+
+export type CustomTextAreaProps = {
+    isLoading?: boolean;
+    error?: string | ReactNode;
+    labelStyles?: string;
+    isRequired?: boolean;
+    label?: string;
+    maxLength?: number
+    } & Omit<TextAreaProps, 'size'>;
+
+export type CustomFieldProps = {
+  messageType?: {
+    type: 'error' | 'success' | 'info';
+    message: string;
+  };
+  error?: string | ReactNode;
+  extra?: React.ReactNode;
+  extraBottom?: React.ReactNode;
+  labelStyles?: string;
+  isRequired?: boolean;
+  isLoading?: boolean;
+} & CustomLabelProps &
+  CustomInputProps &
+  BasePasswordFieldProps;    
