@@ -1,6 +1,6 @@
 "use client";
 
-import { OptionProp } from "@/types/components";
+import { CustomSelectProps, OptionProp } from "@/types/components";
 import {
   Select,
   SelectContent,
@@ -8,17 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./base-select";
-
-type CustomSelectProps = {
-  value: string;
-  onChange: (value: string) => void;
-  options: OptionProp[];
-  placeholder?: string;
-  side?: "top" | "bottom" | "left" | "right";
-  triggerClassName?: string;
-  contentClassName?: string;
-  testIdPrefix?: string;
-};
 
 export const CustomSelect = ({
   value,

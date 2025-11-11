@@ -1,8 +1,11 @@
 'use client';
 
+import CustomFormSelect from '@/components/forms/custom-form-select';
 import CustomTextArea from '@/components/forms/custom-textarea';
 import TextField from '@/components/forms/text-field';
+import { CustomSelect } from '@/components/ui/select/custom-select';
 import { useProductForm } from '@/hooks/useProductForm';
+import { BRAND_OPTIONS, CATEGORY_OPTIONS } from '@/utils/helpers';
 import { productSchema } from '@/utils/schema';
 import { Field, Form, Formik } from 'formik';
 import React from 'react'
@@ -23,7 +26,7 @@ export const ProductForm = () => {
             onSubmit={handleSubmit}
           >
             {({ values, errors, touched, handleChange, handleBlur, setFieldValue, dirty, isValid }) => (
-             <Form className="space-y-5 max-w-2xl shadow-sm">
+             <Form className="space-y-5 max-w-2xl">
           <TextField
             id="productName"
             name="productName"
@@ -31,7 +34,7 @@ export const ProductForm = () => {
             placeholder="Enter product name"
             value={values.productName}
             fieldHasBorder
-            className="bg-transparent border border-[var(--neutral-border)]"
+            className="bg-transparent border"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
               updateProductFormData('productName', e.target.value);
@@ -52,7 +55,7 @@ export const ProductForm = () => {
             placeholder="Write a short description"
             value={values.description}
             fieldHasBorder
-            className="bg-transparent border border-[var(--neutral-border)]"
+            className="bg-transparent h-[10rem] resize-none"
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
               handleChange(e);
               updateProductFormData('description', e.target.value);
@@ -66,44 +69,46 @@ export const ProductForm = () => {
           />
 
           {/* Category */}
-          <TextField
-            id="category"
-            name="category"
-            label="Category"
-            placeholder="e.g. Electronics"
-            value={values.category}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+
+          <CustomFormSelect 
+          id="category"
+          name="category" 
+          value={values.category} 
+          label='Category'
+          onChange={(e) => {
               handleChange(e);
-              updateProductFormData('category', e.target.value);
-            }}
-            onBlur={handleBlur}
-            error={touched.category && Boolean(errors.category)}
+              updateProductFormData('category', e);
+            }} 
+            options={CATEGORY_OPTIONS} 
+            placeholder='select a category'
             messageType={{
-              type: errors,
-              message: touched.category && errors.category,
-            }}
-          />
+                type: errors,
+                message: touched.category && errors.category,
+              }}
+              error={touched.category && Boolean(errors.category)}
+               />
 
           {/* Brand */}
-          <TextField
-            id="brand"
-            name="brand"
-            label="Brand"
-            placeholder="e.g. Samsung"
-            value={values.brand}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          <CustomFormSelect 
+          id="brand"
+          name="brand" 
+          value={values.brand} 
+          label="Brand"
+          onChange={(e) => {
               handleChange(e);
-              updateProductFormData('brand', e.target.value);
-            }}
-            onBlur={handleBlur}
-            error={touched.brand && Boolean(errors.brand)}
+              updateProductFormData('category', e);
+            }} 
+            options={BRAND_OPTIONS} 
+            placeholder='select a brand'
             messageType={{
-              type: errors,
-              message: touched.brand && errors.brand,
-            }}
-          />
+                type: errors,
+                message: touched.brand && errors.brand,
+              }}
+              error={touched.brand && Boolean(errors.brand)}
+               />
+         
 
-          {/* SKU */}
+          <div className="flex flex-col md:flex-row justify-between">
           <TextField
             id="sku"
             name="sku"
@@ -114,6 +119,8 @@ export const ProductForm = () => {
               handleChange(e);
               updateProductFormData('sku', e.target.value);
             }}
+            fieldHasBorder
+            className="bg-transparent border border-[var(--neutral-border)]"
             onBlur={handleBlur}
             error={touched.sku && Boolean(errors.sku)}
             messageType={{
@@ -129,6 +136,8 @@ export const ProductForm = () => {
             label="Stock Quantity"
             type="number"
             placeholder="Enter available stock"
+            fieldHasBorder
+            className="bg-transparent border border-[var(--neutral-border)]"
             value={values.stockQuantity}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
@@ -141,14 +150,16 @@ export const ProductForm = () => {
               message: touched.stockQuantity && errors.stockQuantity,
             }}
           />
-
-          {/* Regular Price */}
+</div>
+<div className="flex flex-col md:flex-row justify-between">
           <TextField
             id="regularPrice"
             name="regularPrice"
             label="Regular Price"
             type="number"
             placeholder="Enter regular price"
+            fieldHasBorder
+            className="bg-transparent border border-[var(--neutral-border)]"
             value={values.regularPrice}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
@@ -169,6 +180,8 @@ export const ProductForm = () => {
             label="Sale Price"
             type="number"
             placeholder="Enter sale price"
+            fieldHasBorder
+            className="bg-transparent border border-[var(--neutral-border)]"
             value={values.salePrice}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
@@ -181,13 +194,15 @@ export const ProductForm = () => {
               message: touched.salePrice && errors.salePrice,
             }}
           />
-
-          {/* Tax Status */}
+</div>
+<div className="flex flex-col md:flex-row justify-between">
           <TextField
             id="TaxStatus"
             name="TaxStatus"
             label="Tax Status"
             placeholder="e.g. Taxable"
+            fieldHasBorder
+            className="bg-transparent border border-[var(--neutral-border)]"
             value={values.TaxStatus}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
@@ -207,6 +222,8 @@ export const ProductForm = () => {
             name="TaxClass"
             label="Tax Class"
             placeholder="e.g. Standard Rate"
+            fieldHasBorder
+            className="bg-transparent border border-[var(--neutral-border)]"
             value={values.TaxClass}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
@@ -220,7 +237,7 @@ export const ProductForm = () => {
             }}
           />
 
-          {/* Tags */}
+         </div>
           <TextField
             id="tags"
             name="tags"
@@ -243,7 +260,7 @@ export const ProductForm = () => {
           />
 
           {/* Image URLs */}
-          <TextField
+          {/* <TextField
             id="imgUrl"
             name="imgUrl"
             label="Image URLs"
@@ -262,7 +279,7 @@ export const ProductForm = () => {
               type: errors,
               message: touched.imgUrl && (errors.imgUrl as string),
             }}
-          />
+          /> */}
         </Form>
         
          )}

@@ -50,8 +50,8 @@ export default function ProductGalleryUpload({
   };
 
   return (
-    <div className="w-full bg-[#1a1d24] p-6">
-      <h2 className="text-white text-xl font-semibold mb-6">Product Gallery</h2>
+    <div className="w-full">
+      <h2 className="text-white text-xl font-semibold mb-2">Product Gallery</h2>
 
       <div
         onDragOver={handleDragOver}

@@ -30,6 +30,18 @@ type BasePasswordFieldProps = {
     hasStrengthMeter?: boolean;
 };
 
+export type CustomInputProps = {
+    preAppend?: React.ReactNode;
+    postAppend?: React.ReactNode;
+    isLoading?: boolean;
+    error?: string | ReactNode;
+    inputType?: 'string' | 'number' | 'currency' | 'password';
+    forgotPassword?: boolean;
+    inputProps?:InputProps;
+  } & Omit<InputProps, 'size'> &
+    Omit<CustomLabelProps, 'label' | 'error'>;
+
+
 export type CustomLabelProps = {
   error?: string;
   label: string;
@@ -47,6 +59,22 @@ export type OptionProp = {
   label: string;
   value: string;
 };
+
+export type CustomSelectProps = {
+    value: OptionProp;
+    onChange: (value: OptionProp | OptionProp[]) => void;
+    options: OptionProp[];
+    placeholder?: string;
+    side?: "top" | "bottom" | "left" | "right";
+    triggerClassName?: string;
+    contentClassName?: string;
+    testIdPrefix?: string;
+  };
+
+export type SpecialBorderProps = {
+    fieldHasBorder?: boolean;
+    borderStyling?: string;
+}
 
 export interface SelectFieldProps extends BaseSelectFieldProps {
   id: string;
@@ -69,22 +97,13 @@ export interface SelectFieldProps extends BaseSelectFieldProps {
   value?: OptionProp;
 }
 
-export type CustomInputProps = {
-    preAppend?: React.ReactNode;
-    postAppend?: React.ReactNode;
-    isLoading?: boolean;
-    error?: string | ReactNode;
-    inputType?: 'string' | 'number' | 'currency' | 'password';
-    forgotPassword?: boolean;
-    inputProps?:InputProps;
-  } & Omit<InputProps, 'size'> &
-    Omit<CustomLabelProps, 'label' | 'error'>;
+export type messageType = {
+    type: 'error' | 'success' | 'info';
+    message: string;
+  };
 
 export type CustomTextAreaProps = {
-    messageType?: {
-        type: 'error' | 'success' | 'info';
-        message: string;
-      };
+    messageType?: messageType;
     isLoading?: boolean;
     error?: string | ReactNode;
     labelStyles?: string;
@@ -96,10 +115,7 @@ export type CustomTextAreaProps = {
     } & Omit<TextAreaProps, 'size'>;
 
 export type CustomFieldProps = {
-  messageType?: {
-    type: 'error' | 'success' | 'info';
-    message: string;
-  };
+  messageType?: messageType;
   error?: string | ReactNode;
   extra?: React.ReactNode;
   extraBottom?: React.ReactNode;

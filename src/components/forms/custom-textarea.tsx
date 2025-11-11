@@ -12,6 +12,7 @@ const CustomTextArea = ({
     isRequired,
     maxLength,
     messageType,
+    className,
     borderStyling = '',
     fieldHasBorder = false,
     ...inputProps
@@ -42,7 +43,7 @@ const CustomTextArea = ({
         </div> {/*${fieldHasBorder ? borderStyling :  'border-none outline-none'*/}
       <div
         data-testid='custom-textarea'
-        className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none'}` } ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} pl-3 ${inputProps.className}`}
+        className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none'}` } ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} pl-3 ${inputProps.className} border-gray-300 dark:border-gray-700`}
       >
         <textarea
           {...inputProps}
@@ -52,7 +53,7 @@ const CustomTextArea = ({
           onChange={handleOnChange}
           value={value}
           rows={inputProps.rows ?? 4}
-          className='h-full w-full bg-transparent outline-none hover:bg-transparent focus:ring-0 active:bg-transparent'
+          className={`w-full bg-transparent outline-none hover:bg-transparent focus:ring-0 active:bg-transparent ${className}`}
         />
       </div>
 

@@ -58,7 +58,7 @@ const CustomInput = ({
   return (
     <div
       data-testid='custom-input'
-      className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none' }`} ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} ${preAppend ? 'pl-2' : 'pl-3'} ${className} border-[var(--neutral-border)]`}
+      className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none' }`} ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} ${preAppend ? 'pl-2' : 'pl-3'} ${className} border-gray-300 dark:border-gray-700`}
     >
       {preAppend && (
         <div className='text-12 lg:text-16 flex min-w-max shrink-0 items-center px-2'>

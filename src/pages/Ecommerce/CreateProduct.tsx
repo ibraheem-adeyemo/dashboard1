@@ -18,12 +18,12 @@ export const CreateProduct = () => {
   };
   return (
     <div>
-      <div className="flex justify-between gap-[15rem] border rounded-lg border-[var(--neutral-border)] p-[3rem]">
+      <div className="flex justify-between gap-[15rem] bg-neutral-bg border rounded-lg border-[var(--neutral-border)] p-[3rem]">
         <div className="flex-2/5">
             <ProductForm />
         </div>
         <div className="flex-2/5">
-          <div className="w-full h-[500px] border rounded-lg border-[var(--neutral-border)] p-[1rem] mb-[4rem]">
+          <div className="w-full h-[500px] border rounded-lg border-gray-300 dark:border-gray-700 p-[1rem] mb-[4rem]">
             {uploadedFiles.length > 0 &&
               previewUrl.map((file, i) => (
                 <div className="w-full h-auto" key={i}>

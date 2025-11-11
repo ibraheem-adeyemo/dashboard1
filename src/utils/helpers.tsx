@@ -61,29 +61,29 @@ export const products = Array.from({ length: 100 }, (_, i) => {
 });
   
 export const CATEGORY_OPTIONS = [
-    'Electronics',
-    'Fashion',
-    'Home & Kitchen',
-    'Beauty & Health',
-    'Sports & Outdoors',
-    'Automotive',
-    'Toys & Games',
-    'Books',
-    'Office Supplies',
-    'Groceries',
+    {value: 'Electronics', label: 'Electronics'},
+    {value: 'Fashion', label: 'Fashion'},
+    {value: 'Home & Kitchen', label: 'Home & Kitchen'},
+    {value: 'Beauty & Health', label: 'Beauty & Health'},
+    {value: 'Sports & Outdoors', label: 'Sports & Outdoors'},
+    {value: 'Automotive', label: 'Automotive'},
+    {value:'Toys & Games', label:'Toys & Games'},
+    {value:'Books', label:'Books'},
+    {value:'Office Supplies', label:'Office Supplies'},
+    {value:'Groceries', label:'Groceries'},
   ];
   
   export const BRAND_OPTIONS = [
-    'Samsung',
-    'Apple',
-    'Sony',
-    'LG',
-    'Nike',
-    'Adidas',
-    'Dell',
-    'HP',
-    'Nestle',
-    'Puma',
+    {value:'Samsung', label: 'Samsung'},
+    {value: 'Apple', label: 'Apple'},
+    {value:'Sony', label: 'Sony'},
+    {value: 'LG', label: 'LG'},
+    {value: 'Nike', label: 'Nike'},
+    {value: 'Adidas', label: 'Adidas'},
+    {value: 'Dell', label: 'Dell'},
+    {value: 'HP', label: 'HP'},
+    {value: 'Nestle', label: 'Nestle'},
+    {value: 'Puma', label: 'Puma'},
   ];
   
   export const TAX_STATUS_OPTIONS = ['Taxable', 'Shipping only', 'None'];
@@ -108,18 +108,18 @@ export const CATEGORY_OPTIONS = [
     return {
       id: `prod-${i + 1}`,
       productName: `${randomBrand} ${randomCategory} Item ${i + 1}`,
-      description: `High-quality ${randomCategory.toLowerCase()} product by ${randomBrand}. Durable, efficient, and ideal for daily use.`,
+      description: `High-quality ${randomCategory.value.toLowerCase()} product by ${randomBrand}. Durable, efficient, and ideal for daily use.`,
       category: randomCategory,
       brand: randomBrand,
-      sku: `${randomBrand.slice(0, 3).toUpperCase()}-${i + 1000}`,
+      sku: `${randomBrand.value.slice(0, 3).toUpperCase()}-${i + 1000}`,
       stockQuantity: Math.floor(Math.random() * 500) + 1,
       regularPrice: parseFloat((Math.random() * 500 + 50).toFixed(2)),
       salePrice: parseFloat((Math.random() * 300 + 20).toFixed(2)),
       TaxStatus: randomTaxStatus,
       TaxClass: randomTaxClass,
       tags: [
-        randomCategory.toLowerCase(),
-        randomBrand.toLowerCase(),
+        randomCategory.value.toLowerCase(),
+        randomBrand.value.toLowerCase(),
         i % 2 === 0 ? 'featured' : 'new',
       ],
       imgUrl: [
