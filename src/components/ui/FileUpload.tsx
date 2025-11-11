@@ -65,7 +65,7 @@ export default function ProductGalleryUpload({
           ${
             isDragging
               ? "border-indigo-500 bg-indigo-500/5"
-              : "border-gray-600 bg-[#24272f] hover:border-indigo-500/50 hover:bg-[#2a2d35]"
+              : "border-gray-600 hover:border-indigo-500/50"
           }
         `}
         onClick={handleBrowseClick}

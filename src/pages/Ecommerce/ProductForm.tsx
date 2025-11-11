@@ -8,11 +8,18 @@ import { useProductForm } from '@/hooks/useProductForm';
 import { BRAND_OPTIONS, CATEGORY_OPTIONS } from '@/utils/helpers';
 import { productSchema } from '@/utils/schema';
 import { Field, Form, Formik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
+import TagInput from './TagInput';
 
 export const ProductForm = () => {
     const {initialProductValue, updateProductFormData, productFormData, handleSubmit } = useProductForm();
 
+    const [tags, setTags] = useState([])
+
+  const handleTagsChange = (newTags:[]) => {
+    console.log('Tags updated:', newTags);
+    setTags(newTags);
+  };
 
   return (
     <div>
@@ -238,7 +245,11 @@ export const ProductForm = () => {
           />
 
          </div>
-          <TextField
+         <TagInput 
+        initialTags={tags}
+        onTagsChange={handleTagsChange}
+      />
+          {/* <TextField
             id="tags"
             name="tags"
             label="Tags"
@@ -257,29 +268,9 @@ export const ProductForm = () => {
               type: errors,
               message: touched.tags && (errors.tags as string),
             }}
-          />
-
-          {/* Image URLs */}
-          {/* <TextField
-            id="imgUrl"
-            name="imgUrl"
-            label="Image URLs"
-            placeholder="Enter image URLs separated by commas"
-            value={values.imgUrl.join(', ')}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              const imgList = e.target.value.split(',').map(url => url.trim());
-              handleChange({
-                target: { name: 'imgUrl', value: imgList },
-              } as any);
-              updateProductFormData('imgUrl', imgList);
-            }}
-            onBlur={handleBlur}
-            error={touched.imgUrl && Boolean(errors.imgUrl)}
-            messageType={{
-              type: errors,
-              message: touched.imgUrl && (errors.imgUrl as string),
-            }}
           /> */}
+
+          
         </Form>
         
          )}

@@ -18,7 +18,6 @@ const TextField = ({
   ...inputProps
 }: CustomFieldProps) => {
     
-    console.log(messageType)
   const getMessageColor = (type: string) => {
     switch (type) {
       case 'error':
