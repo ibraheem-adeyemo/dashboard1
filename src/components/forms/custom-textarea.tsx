@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react';
 import { CustomInputProps, CustomTextAreaProps } from '../../types/components';
+import FieldError from './field-error';
 import { InputLabel } from './input-label';
 
 const CustomTextArea = ({
@@ -10,6 +11,9 @@ const CustomTextArea = ({
     label,
     isRequired,
     maxLength,
+    messageType,
+    borderStyling = '',
+    fieldHasBorder = false,
     ...inputProps
   }: CustomTextAreaProps) => {
     const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -31,14 +35,14 @@ const CustomTextArea = ({
                 hasRequiredStar={isRequired}
             />
         
-            <div className="mt-1 text-right text-sm text-neutral-500">
+            {/* <div className="mt-1 text-right text-sm text-neutral-500">
                 {charCount}/{maxLength}
-            </div>
+            </div> */}
                 
-        </div>
+        </div> {/*${fieldHasBorder ? borderStyling :  'border-none outline-none'*/}
       <div
         data-testid='custom-textarea'
-        className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : 'text-text-primary border-none outline-none'} ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} pl-3 ${inputProps.className}`}
+        className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none'}` } ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} pl-3 ${inputProps.className}`}
       >
         <textarea
           {...inputProps}
@@ -51,6 +55,18 @@ const CustomTextArea = ({
           className='h-full w-full bg-transparent outline-none hover:bg-transparent focus:ring-0 active:bg-transparent'
         />
       </div>
+
+      {!isLoading && (messageType || error) && (
+        <div className={`flex items-center mt-[0.5rem]`}>
+          <span className='ml-1 text-xs'>
+            {messageType?.type === 'error' || error ? (
+              <FieldError error={error} message={messageType?.message} extra={'extra'} />
+            ) : (
+              messageType?.message
+            )}
+          </span>
+        </div>
+      )}
     </div>
     );
   };

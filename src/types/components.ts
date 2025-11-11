@@ -81,11 +81,17 @@ export type CustomInputProps = {
     Omit<CustomLabelProps, 'label' | 'error'>;
 
 export type CustomTextAreaProps = {
+    messageType?: {
+        type: 'error' | 'success' | 'info';
+        message: string;
+      };
     isLoading?: boolean;
     error?: string | ReactNode;
     labelStyles?: string;
     isRequired?: boolean;
     label?: string;
+    borderStyling?: string;
+    fieldHasBorder: boolean,
     maxLength?: number
     } & Omit<TextAreaProps, 'size'>;
 

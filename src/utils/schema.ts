@@ -10,7 +10,8 @@ export const productSchema = Yup.object().shape({
   description: Yup.string()
     .trim()
     .required('Product description is required')
-    .max(500, 'Description must be at most 50 characters'),
+    .min(50, 'Product description must be at atleast 50 characters')
+    .max(500, 'Product description must be at most 500 characters'),
 
   category: Yup.string()
     .trim()

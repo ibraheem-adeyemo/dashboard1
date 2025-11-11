@@ -59,3 +59,73 @@ export const products = Array.from({ length: 100 }, (_, i) => {
     description,
   };
 });
+  
+export const CATEGORY_OPTIONS = [
+    'Electronics',
+    'Fashion',
+    'Home & Kitchen',
+    'Beauty & Health',
+    'Sports & Outdoors',
+    'Automotive',
+    'Toys & Games',
+    'Books',
+    'Office Supplies',
+    'Groceries',
+  ];
+  
+  export const BRAND_OPTIONS = [
+    'Samsung',
+    'Apple',
+    'Sony',
+    'LG',
+    'Nike',
+    'Adidas',
+    'Dell',
+    'HP',
+    'Nestle',
+    'Puma',
+  ];
+  
+  export const TAX_STATUS_OPTIONS = ['Taxable', 'Shipping only', 'None'];
+  
+  export const TAX_CLASS_OPTIONS = [
+    'Standard Rate',
+    'Reduced Rate',
+    'Zero Rate',
+  ];
+
+  
+  export const mockProducts = Array.from({ length: 50 }, (_, i) => {
+    const randomCategory =
+      CATEGORY_OPTIONS[Math.floor(Math.random() * CATEGORY_OPTIONS.length)];
+    const randomBrand =
+      BRAND_OPTIONS[Math.floor(Math.random() * BRAND_OPTIONS.length)];
+    const randomTaxStatus =
+      TAX_STATUS_OPTIONS[Math.floor(Math.random() * TAX_STATUS_OPTIONS.length)];
+    const randomTaxClass =
+      TAX_CLASS_OPTIONS[Math.floor(Math.random() * TAX_CLASS_OPTIONS.length)];
+  
+    return {
+      id: `prod-${i + 1}`,
+      productName: `${randomBrand} ${randomCategory} Item ${i + 1}`,
+      description: `High-quality ${randomCategory.toLowerCase()} product by ${randomBrand}. Durable, efficient, and ideal for daily use.`,
+      category: randomCategory,
+      brand: randomBrand,
+      sku: `${randomBrand.slice(0, 3).toUpperCase()}-${i + 1000}`,
+      stockQuantity: Math.floor(Math.random() * 500) + 1,
+      regularPrice: parseFloat((Math.random() * 500 + 50).toFixed(2)),
+      salePrice: parseFloat((Math.random() * 300 + 20).toFixed(2)),
+      TaxStatus: randomTaxStatus,
+      TaxClass: randomTaxClass,
+      tags: [
+        randomCategory.toLowerCase(),
+        randomBrand.toLowerCase(),
+        i % 2 === 0 ? 'featured' : 'new',
+      ],
+      imgUrl: [
+        `https://picsum.photos/seed/product${i + 1}/600/400`,
+        `https://picsum.photos/seed/product${i + 1}-alt/600/400`,
+      ],
+    };
+  });
+  
