@@ -7,11 +7,12 @@ interface DropdownProps {
   trigger: ReactNode;
   children: ReactNode;
   align?: "left" | "right";
+  onClick?: ()=>void
 }
 
-const Dropdown = ({ trigger, children, align = "right" }: DropdownProps) => {
+const Dropdown = ({ trigger, children, onClick, align = "right" }: DropdownProps) => {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left" onClick={onClick}>
       <MenuButton>{trigger}</MenuButton>
 
       <Transition

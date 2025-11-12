@@ -8,6 +8,7 @@ import { ProductListingProps } from "@/types/data.type";
 import RowActions from "@/components/table/recentPurchases/RowActions";
 import Image from "next/image";
 import { StarRating } from "@/components/ui/StarRating";
+import { option1, option2 } from "@/redux/store";
 
 interface ProductTableProps {
   data: ProductListingProps[];
@@ -28,11 +29,12 @@ export const ProductTable = ({
   isLoading,
   resultCount = data.length,
 }: ProductTableProps) => {
+    const onDropdown = () => console.log('e');
   const columns: ColumnDef<ProductListingProps>[] = [
     {
       accessorKey: "image",
       header: "Image",
-      cell: ({ row }: infoProps) => {
+      cell: ({ row }: RowProps) => {
         console.log(row);
         return (
           <div>
@@ -49,7 +51,7 @@ export const ProductTable = ({
     {
       accessorKey: "name",
       header: "Name",
-      cell: ({ row }: infoProps) => {
+      cell: ({ row }: RowProps) => {
         return (
           <div className="w-[14rem]">
             <h4 className="font-bold text-text-secondary">
@@ -68,7 +70,7 @@ export const ProductTable = ({
     {
       accessorKey: "price",
       header: "Price",
-      cell: ({ row }: infoProps) => (
+      cell: ({ row }: RowProps) => (
         <div className="text-text-secondary font-bold">
           {row.original.price}
         </div>
@@ -89,7 +91,7 @@ export const ProductTable = ({
     {
       accessorKey: "ratings",
       header: "Rating",
-      cell: ({ row }: infoProps) => <StarRating rating={row.original.rating} />,
+      cell: ({ row }: RowProps) => <StarRating rating={row.original.rating} />,
     },
     {
       accessorKey: "",
@@ -99,12 +101,16 @@ export const ProductTable = ({
     {
       id: "actions",
       header: "Actions",
-      cell: ({ row }: RowProps) => <RowActions />,
+      cell: ({ row }: RowProps) => <RowActions options={option1} />,
     },
   ];
 
   return (
-    <div className="text-gray-500">
+    <div className="text-gray-500 border border-button-outline-stroke-active">
+        <div className="flex justify-between m-[2rem]">
+            <span className="font-bold">Listings</span>
+            <RowActions onSelect={onDropdown} options={option2} />
+        </div>
       <DataTable
         columns={columns}
         data={data}

@@ -27,7 +27,7 @@ function TableBody<TData>({ table, isLoading }: TableBodyProps<TData>) {
       {table.getRowModel().rows.map((row: Row<TData>) => (
         <tr
           key={row.id}
-          className="border-button-outline-stroke-active bg-surface-primary border-b last:border-none"
+          className="border-button-outline-stroke-active bg-neutral-bg border-b last:border-none"
         >
           {row.getVisibleCells().map((cell) => (
             <td key={cell.id} className="px-4 py-4 text-left text-sm align-top">

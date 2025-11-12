@@ -8,6 +8,7 @@ export interface ProductListingProps {
   qty: number;
   ratings: number;
   allOders: number;
+  rating: number;
   successfulOrder: number;
   description: string;
 }

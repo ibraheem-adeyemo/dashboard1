@@ -15,6 +15,20 @@ export const categoryData = [
   { label: "Banking", amount: 490.51, percentage: 73, color: "bg-sky-400" },
 ];
 
+
+export const option1 = [
+    {text: 'View details'},
+    {text: 'Pending'},
+    {text: 'Completed'},
+    {text: 'Cancel'},
+]
+
+export const option2 = [
+    {text: 'All'},
+    {text: 'Active'},
+    {text: 'Inactive'}
+]
+
 export const store = configureStore({
   reducer: {
     user: userReducer,
