@@ -7,6 +7,9 @@ import {
   FaEnvelope,
   FaMoneyBill,
 } from "react-icons/fa";
+import { CiHome } from "react-icons/ci";
+import { FiPieChart } from "react-icons/fi";
+import { PiCubeThin } from "react-icons/pi";
 
 export interface SubMenuItem {
   label: string;
@@ -24,18 +27,42 @@ export const sidebarData: SidebarItem[] = [
   {
     label: "Dashboard",
     href: "/dashboard",
-    icon: FaTachometerAlt,
+    icon: CiHome,
   },
   {
-    label: "Financial",
-    href: "/dashboard/financial",
-    icon: FaMoneyBill,
+    label: "Analytics",
+    href: "/dashboard/analytics",
+    icon: FiPieChart,
+  },
+  {
+    label: "Product",
+    href: "/dashboard/ecommerce/products",
+    icon: PiCubeThin,
+  },
+  {
+    label: "Inventory",
+    href: "/dashboard/analytics",
+    icon: FiPieChart,
+  },
+  {
+    label: "Orders",
+    href: "/dashboard/ecommerce/products",
+    icon: PiCubeThin,
+  },
+  {
+    label: "Sales",
+    href: "/dashboard/analytics",
+    icon: FiPieChart,
+  },
+  {
+    label: "Customer",
+    href: "/dashboard/ecommerce/products",
+    icon: PiCubeThin,
   },
   {
     label: "Ecommerce",
     icon: FaShoppingCart,
     submenu: [
-      { label: "Products", href: "/dashboard/ecommerce/products" },
       { label: "Products form", href: "/dashboard/ecommerce/product-form" },
       { label: "Orders", href: "/ecommerce/orders" },
       { label: "Customers", href: "/ecommerce/customers" },
