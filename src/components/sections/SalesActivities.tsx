@@ -23,7 +23,7 @@ const stats = [
     },
   },
   {
-    title: "Refunds",
+    title: "New Orders",
     value: "$430",
     icon: "/images/icons/icon-share.svg",
     trend: {

@@ -35,9 +35,18 @@ export const sidebarData: SidebarItem[] = [
     icon: FiPieChart,
   },
   {
-    label: "Product",
-    href: "/dashboard/ecommerce/products",
+    label: "Products",
     icon: PiCubeThin,
+    submenu: [
+        {
+            label: "All products",
+            href: "/dashboard/products",
+        },
+        {
+            label: "New product",
+            href: "/dashboard/products/product-form"
+        }
+    ]
   },
   {
     label: "Inventory",
