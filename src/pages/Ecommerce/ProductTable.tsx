@@ -35,7 +35,6 @@ export const ProductTable = ({
       accessorKey: "image",
       header: "Image",
       cell: ({ row }: RowProps) => {
-        console.log(row);
         return (
           <div>
             <Image

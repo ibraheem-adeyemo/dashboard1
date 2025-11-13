@@ -109,7 +109,7 @@ export const StatCard2 = ({
 
   return (
     <div
-      className="bg-[#1f2128] rounded-xl p-5 text-gray-300 shadow-md flex flex-col justify-between w-full min-w-[250px]
+      className="bg-neutral-bg rounded-xl p-5 shadow-md flex flex-col justify-between w-full min-w-[250px]
       transform transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
     >
       {/* Header */}
@@ -124,7 +124,7 @@ export const StatCard2 = ({
             <p className="text-sm text-gray-400">{title}</p>
           </div>
           <div className="flex flex-col items-center gap-2">
-            <h3 className="text-lg font-semibold text-white">
+            <h3 className="text-lg font-semibold">
               $
               <CountUp
                 end={parseFloat(value.replace(/[^0-9.]/g, ""))}

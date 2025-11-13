@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import _ from "lodash";
 import { RootState } from "../../store/store";
 
+
 export type TableState = {
   pageSize: number;
   pageNumber: number;

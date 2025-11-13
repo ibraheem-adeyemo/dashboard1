@@ -17,8 +17,10 @@ interface UseTableReturn {
 export const useTableSlice = (): UseTableReturn => {
   const dispatch = useAppDispatch();
   const tableState = useAppSelector(selectTableData);
+
   const setTableState = useCallback(
     (data: Partial<TableState>) => {
+        console.log(data, '========= data ======');
       dispatch(setTableStateItem(data));
     },
     [dispatch],

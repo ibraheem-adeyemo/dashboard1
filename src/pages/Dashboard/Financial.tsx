@@ -4,7 +4,7 @@ import React from "react";
 import { TrendingUp, DollarSign, Wallet, PieChart } from "lucide-react";
 import { StatCard2 } from "@/components/ui/cards/statCard";
 import { WalletCard } from "@/components/ui/cards/WalletCard";
-import { ExpensesCard } from "@/components/ui/cards/ExpensesCard";
+import ExpensesChart, { ExpensesCard } from "@/components/ui/cards/ExpensesCard";
 import { BestSellersCard } from "@/components/ui/cards/BestSellersCard";
 import CategoryStatsCard from "@/components/ui/cards/CategoryStatsCard";
 import { categoryData } from "@/redux/store";
@@ -58,11 +58,11 @@ const Financials = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
         <WalletCard />
-        <ExpensesCard />
+        <ExpensesChart />
         <BestSellersCard />
       </div>
       <div>
-        <div className="min-h-screen bg-gray-950 py-10 flex flex-col md:flex-row gap-6 ">
+        <div className="py-10 flex flex-col md:flex-row gap-6 ">
           <div className="md:w-3/5 w-full">
             <CategoryStatsCard title="Categories Static" data={categoryData} />
           </div>

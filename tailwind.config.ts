@@ -77,6 +77,7 @@ const config: Config = {
         "neutral-bg": "var(--neutral-bg)",
         " neutral-border": "var( --neutral-border)",
         background: "var(--gray-100)",
+        "neutral-accent": "var(--neutral-accent)",
         neutral: {
           100: "var(--neutral-100)",
           200: "var(--neutral-200)",

@@ -22,7 +22,7 @@ export const WalletCard = () => {
   ];
 
   return (
-    <div className="bg-[#1f2128] rounded-2xl p-5 text-gray-300 shadow-md flex flex-col justify-between min-w-[280px]">
+    <div className="bg-neutral-bg rounded-2xl p-5 shadow-md flex flex-col justify-between min-w-[280px]">
       <div className="flex items-center justify-between mb-5">
         <p className="text-sm font-semibold text-gray-400">Your wallet</p>
         <MoreVertical size={16} className="text-gray-500 cursor-pointer" />
@@ -37,7 +37,7 @@ export const WalletCard = () => {
                 {wallet.amount}
               </p>
             </div>
-            <div className="w-12 h-8 bg-[#2A2D34] rounded grid place-items-center">
+            <div className="w-12 h-8 bg-neutral-accent rounded grid place-items-center">
               {wallet.icon ? (
                 <Image
                   src={wallet.icon}
