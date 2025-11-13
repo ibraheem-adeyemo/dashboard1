@@ -15,7 +15,7 @@ const DropdownOpton1 = ({options, onSelect }: {options:{text: string}[], onSelec
         }
     </div>
 )
-export default function RowActions({options, onSelect}: {options:{text: string}[],onSelect?: (value: string)=>void}) {
+export function RowActions({options, onSelect}: {options:{text: string}[],onSelect?: (value: string)=>void}) {
   return (
     <div className="flex justify-center z-20">
       <Dropdown trigger={<KebabIcon />} align="right">
@@ -24,3 +24,9 @@ export default function RowActions({options, onSelect}: {options:{text: string}[
     </div>
   );
 }
+
+// export const RowAction2 = () => {
+//     return(
+
+//     )
+// }

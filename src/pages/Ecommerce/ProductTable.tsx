@@ -5,7 +5,7 @@ import DataTable from "@/components/ui/table/data-table";
 import StatusPill from "@/components/ui/table/status-pill";
 import { ColumnDef } from "@tanstack/react-table";
 import { ProductListingProps } from "@/types/data.type";
-import RowActions from "@/components/table/recentPurchases/RowActions";
+import { RowActions } from "@/components/table/recentPurchases/RowActions";
 import Image from "next/image";
 import { StarRating } from "@/components/ui/StarRating";
 import { option1, option2 } from "@/redux/store";

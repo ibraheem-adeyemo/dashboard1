@@ -4,8 +4,8 @@ import React from "react";
 import { Purchase } from "./purchases.data";
 import DataTable from "@/components/ui/table/data-table";
 import StatusPill from "@/components/ui/table/status-pill";
-import RowActions from "./RowActions";
 import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 
 interface PurchaseTableProps {
   data: Purchase[];
@@ -62,7 +62,7 @@ const PurchaseTable = ({
     {
       id: "actions",
       header: "Actions",
-      cell: ({ row }: RowProps) => <RowActions />,
+      cell: ({ row }: RowProps) => <div><Link href="">View details</Link></div>,
     },
   ];
 
