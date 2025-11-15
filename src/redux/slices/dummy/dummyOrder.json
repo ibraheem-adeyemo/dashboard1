@@ -1,0 +1,183 @@
+[
+    {
+      "orderId": "ORD-1001",
+      "userId": "USR-001",
+      "items": [
+        { "productId": "P-120", "name": "Wireless Earbuds", "qty": 1, "price": 55.99 }
+      ],
+      "totalAmount": 55.99,
+      "currency": "USD",
+      "paymentMethod": "credit_card",
+      "status": "completed",
+      "createdAt": "2025-01-12T10:45:32Z",
+      "shippingAddress": "221B Baker Street, London, UK",
+      "shippingMethod": "DHL Express",
+      "deviceFingerprint": "dfp_8f23ab901",
+      "geolocation": { "lat": 51.509865, "lng": -0.118092 },
+      "fraudScore": 12,
+      "notes": "Repeat customer"
+    },
+    {
+      "orderId": "ORD-1002",
+      "userId": "USR-004",
+      "items": [
+        { "productId": "P-340", "name": "Samsung S23 Case", "qty": 2, "price": 19.99 }
+      ],
+      "totalAmount": 39.98,
+      "currency": "EUR",
+      "paymentMethod": "paypal",
+      "status": "pending",
+      "createdAt": "2025-02-08T14:12:10Z",
+      "shippingAddress": "Schönhauser Allee 45, Berlin, Germany",
+      "shippingMethod": "Standard Post",
+      "deviceFingerprint": "dfp_993bd0ae",
+      "geolocation": { "lat": 52.520008, "lng": 13.404954 },
+      "fraudScore": 9,
+      "notes": "Awaiting payment confirmation"
+    },
+    {
+      "orderId": "ORD-1003",
+      "userId": "USR-009",
+      "items": [
+        { "productId": "P-988", "name": "Gaming Laptop", "qty": 1, "price": 1299.99 }
+      ],
+      "totalAmount": 1299.99,
+      "currency": "USD",
+      "paymentMethod": "bank_transfer",
+      "status": "completed",
+      "createdAt": "2025-02-20T09:01:11Z",
+      "shippingAddress": "453 Mission St, San Francisco, USA",
+      "shippingMethod": "FedEx Priority",
+      "deviceFingerprint": "dfp_1cd89f221",
+      "geolocation": { "lat": 37.7749, "lng": -122.4194 },
+      "fraudScore": 22,
+      "notes": "High-value item verification passed"
+    },
+    {
+      "orderId": "ORD-1004",
+      "userId": "USR-015",
+      "items": [
+        { "productId": "P-551", "name": "African Print Dress", "qty": 1, "price": 45.0 }
+      ],
+      "totalAmount": 45.0,
+      "currency": "NGN",
+      "paymentMethod": "card",
+      "status": "completed",
+      "createdAt": "2025-01-30T16:22:18Z",
+      "shippingAddress": "Ikeja City Mall, Lagos, Nigeria",
+      "shippingMethod": "Local Courier",
+      "deviceFingerprint": "dfp_b7712de01",
+      "geolocation": { "lat": 6.6018, "lng": 3.3515 },
+      "fraudScore": 7,
+      "notes": ""
+    },
+    {
+      "orderId": "ORD-1005",
+      "userId": "USR-021",
+      "items": [
+        { "productId": "P-210", "name": "Men's Running Shoes", "qty": 1, "price": 79.5 }
+      ],
+      "totalAmount": 79.5,
+      "currency": "AED",
+      "paymentMethod": "apple_pay",
+      "status": "completed",
+      "createdAt": "2025-03-01T08:14:52Z",
+      "shippingAddress": "Deira City Centre, Dubai, UAE",
+      "shippingMethod": "Aramex",
+      "deviceFingerprint": "dfp_88cd23a7f",
+      "geolocation": { "lat": 25.276987, "lng": 55.296249 },
+      "fraudScore": 5,
+      "notes": ""
+    },
+    {
+      "orderId": "ORD-1006",
+      "userId": "USR-011",
+      "items": [
+        { "productId": "P-331", "name": "Bluetooth Keyboard", "qty": 1, "price": 35.99 }
+      ],
+      "totalAmount": 35.99,
+      "currency": "USD",
+      "paymentMethod": "credit_card",
+      "status": "canceled",
+      "createdAt": "2025-02-01T11:40:10Z",
+      "shippingAddress": "Sunset Blvd, Los Angeles, USA",
+      "shippingMethod": "UPS",
+      "deviceFingerprint": "dfp_56afc13dd",
+      "geolocation": { "lat": 34.0522, "lng": -118.2437 },
+      "fraudScore": 48,
+      "notes": "Order cancelled due to mismatch in billing address"
+    },
+    {
+      "orderId": "ORD-1007",
+      "userId": "USR-016",
+      "items": [
+        { "productId": "P-777", "name": "Smartwatch", "qty": 1, "price": 120.0 }
+      ],
+      "totalAmount": 120.0,
+      "currency": "GBP",
+      "paymentMethod": "google_pay",
+      "status": "completed",
+      "createdAt": "2025-02-21T13:55:31Z",
+      "shippingAddress": "Manchester Road, Manchester, UK",
+      "shippingMethod": "Royal Mail",
+      "deviceFingerprint": "dfp_f02aa8761",
+      "geolocation": { "lat": 53.480759, "lng": -2.242631 },
+      "fraudScore": 10,
+      "notes": ""
+    },
+    {
+      "orderId": "ORD-1008",
+      "userId": "USR-030",
+      "items": [
+        { "productId": "P-904", "name": "Laptop Stand", "qty": 1, "price": 29.99 }
+      ],
+      "totalAmount": 29.99,
+      "currency": "USD",
+      "paymentMethod": "credit_card",
+      "status": "completed",
+      "createdAt": "2025-03-02T17:45:10Z",
+      "shippingAddress": "Toronto, Canada",
+      "shippingMethod": "Canada Post",
+      "deviceFingerprint": "dfp_a44de8910",
+      "geolocation": { "lat": 43.6532, "lng": -79.3832 },
+      "fraudScore": 6,
+      "notes": ""
+    },
+    {
+      "orderId": "ORD-1009",
+      "userId": "USR-040",
+      "items": [
+        { "productId": "P-1201", "name": "4K Monitor", "qty": 1, "price": 329.99 }
+      ],
+      "totalAmount": 329.99,
+      "currency": "EUR",
+      "paymentMethod": "bank_transfer",
+      "status": "processing",
+      "createdAt": "2025-03-03T12:14:30Z",
+      "shippingAddress": "Milan, Italy",
+      "shippingMethod": "DHL",
+      "deviceFingerprint": "dfp_9af8df442",
+      "geolocation": { "lat": 45.4642, "lng": 9.19 },
+      "fraudScore": 15,
+      "notes": ""
+    },
+    {
+      "orderId": "ORD-1010",
+      "userId": "USR-019",
+      "items": [
+        { "productId": "P-654", "name": "Noise Cancelling Headphones", "qty": 1, "price": 89.99 }
+      ],
+      "totalAmount": 89.99,
+      "currency": "USD",
+      "paymentMethod": "credit_card",
+      "status": "completed",
+      "createdAt": "2025-03-04T09:29:58Z",
+      "shippingAddress": "Johannesburg, South Africa",
+      "shippingMethod": "Local Courier",
+      "deviceFingerprint": "dfp_ff12389ce",
+      "geolocation": { "lat": -26.2041, "lng": 28.0473 },
+      "fraudScore": 13,
+      "notes": ""
+    }
+  ]
+  

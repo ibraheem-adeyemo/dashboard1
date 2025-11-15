@@ -1,3 +1,9 @@
+import { deleteCookie, setCookie } from 'cookies-next';
+import { format, getDate } from 'date-fns';
+import dayjs from 'dayjs';
+import { StorageKeys } from '@/constants/enums';
+import StatusPill from '@/components/ui/table/status-pill';
+
 export function cleanGlobals(globalSet: Record<string, any>) {
   const cleaned: Record<string, any> = {};
   for (const key in globalSet) {
@@ -129,3 +135,203 @@ export const CATEGORY_OPTIONS = [
     };
   });
   
+
+export const getNameInitials = (name: string) =>
+  name
+    ?.trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((n) => n[0])
+    .join('');
+
+export function getDaySuffix(day: number): string {
+  if ([1, 21, 31].includes(day)) return 'st';
+  if ([2, 22].includes(day)) return 'nd';
+  if ([3, 23].includes(day)) return 'rd';
+  return 'th';
+}
+
+export function getDayWithSuffix(date: Date) {
+  const day = getDate(date);
+  return `${day}${getDaySuffix(day)}`;
+}
+
+export const formatDate = (date: Date) => {
+  const dayWithSuffix = getDayWithSuffix(date);
+  return `${format(date, 'MMM')} ${dayWithSuffix}, ${format(date, 'yyyy')}`;
+};
+
+export const formatLabel = (str: string) => {
+  return str
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/^./, (str) => str.toUpperCase())
+    .replace(/Id$/i, ' ID')
+    .replace(/Pan$/i, ' PAN');
+};
+
+export const formatValue = (key: string, val: unknown) => {
+  if (key.toLowerCase().includes('status') || key.toLowerCase() === 'changetype') {
+    return <StatusPill text={String(val)} isLoading={false} />;
+  }
+  if (key.toLowerCase() === 'country') {
+    return getCountryFullName(val as string);
+  }
+  if (val instanceof Date) {
+    return dayjs(val).format('DD/MM/YYYY, HH:mm:ss');
+  }
+  if (typeof val === 'boolean') {
+    return val ? 'Yes' : 'No';
+  }
+  if (val === null || val === undefined) {
+    return 'N/A';
+  }
+  return String(val);
+};
+
+export const storageService = () => {
+  return {
+    setLoginData: (token: string) => {
+      sessionStorage.setItem(StorageKeys.SESSION_TOKEN, token);
+      setCookie(StorageKeys.SESSION_TOKEN, token);
+    },
+    clearLoginData: () => {
+      sessionStorage.removeItem(StorageKeys.SESSION_TOKEN);
+      deleteCookie(StorageKeys.SESSION_TOKEN);
+    },
+    setSessionItem: (key: string, value: string) => {
+      sessionStorage.setItem(key, value);
+    },
+    getSessionItem: (key: string) => {
+      return sessionStorage?.getItem(key);
+    },
+    removeSessionItem: (key: string) => {
+      sessionStorage.removeItem(key);
+    },
+    setLocalItem: (key: string, value: string) => {
+      localStorage.setItem(key, value);
+    },
+    getLocalItem: (key: string) => {
+      return localStorage.getItem(key);
+    },
+    removeLocalItem: (key: string) => {
+      localStorage.removeItem(key);
+    },
+  };
+};
+
+export function getCountryFullName(abbreviation: string): string {
+  const countryMap: Record<string, string> = {
+    UG: 'Uganda',
+    NG: 'Nigeria',
+    GH: 'Ghana',
+    KY: 'Kenya',
+  };
+
+  return countryMap[abbreviation.toUpperCase()] || 'Unknown Country';
+}
+
+export const formatDateToDDMMYYYY = (
+  date: string | undefined,
+  options?: {
+    includeTime?: boolean;
+    timeFormat?: string;
+  },
+): string | undefined => {
+  if (!date) return undefined;
+  try {
+    // Parse the date assuming it's in ISO format or similar
+    const parsedDate = new Date(date);
+    if (isNaN(parsedDate.getTime())) return undefined;
+
+    // Format to dd-MM-yyyy
+    let formatString = 'dd-MM-yyyy';
+
+    // Add time format if includeTime is true
+    if (options?.includeTime) {
+      formatString += ` ${options.timeFormat || 'HH:mm:ss'}`;
+    }
+
+    return format(parsedDate, formatString);
+  } catch {
+    return undefined;
+  }
+};
+
+export const formatDateForBackend = (date: Date) => {
+  // dd-MM-yyyy HH:mm:ss format
+  if (!date) return '';
+
+  const parsed = typeof date === 'string' ? new Date(date) : date;
+
+  if (isNaN(parsed.getTime())) return ''; // invalid date fallback
+
+  const pad = (n: number) => n.toString().padStart(2, '0');
+
+  const day = pad(parsed.getDate());
+  const month = pad(parsed.getMonth() + 1);
+  const year = parsed.getFullYear();
+  const hours = pad(parsed.getHours());
+  const minutes = pad(parsed.getMinutes());
+  const seconds = pad(parsed.getSeconds());
+
+  return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+};
+
+
+
+export function convertDate(input: string): string {
+  // Parse input string
+  const [datePart, timePart] = input.split(' ');
+  const [day, month, year] = datePart.split('-').map(Number);
+  const [hours, minutes, seconds] = timePart.split(':').map(Number);
+
+  // Create date object in UTC
+  const date = new Date(Date.UTC(year, month - 1, day, hours, minutes, seconds));
+
+  // Validate date
+  if (isNaN(date.getTime())) {
+    throw new Error('Invalid date format: DD-MM-YYYY HH:mm:ss');
+  }
+  date.setUTCDate(date.getUTCDate() + 32);
+  date.setUTCHours(date.getUTCHours() + 23);
+  date.setUTCMilliseconds(date.getUTCMilliseconds() + 228);
+
+  return date.toISOString();
+}
+
+export function isIpAddress(value: string): boolean {
+  // IPv4 pattern
+  const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}$/;
+
+  // IPv6 pattern (including zone index like %0)
+  const ipv6Pattern = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}(%\w+)?$/;
+
+  // IPv6 compressed format (::1)
+  const ipv6CompressedPattern = /^::1(%\w+)?$/;
+
+  // IPv6 loopback with zone index (0:0:0:0:0:0:0:1%0)
+  const ipv6LoopbackWithZone = /^0{1,4}(:0{1,4}){5,7}%\d+$/;
+
+  return (
+    ipv4Pattern.test(value) ||
+    ipv6Pattern.test(value) ||
+    ipv6CompressedPattern.test(value) ||
+    ipv6LoopbackWithZone.test(value)
+  );
+}
+
+
+/**
+ * Converts an action type constant (e.g., "VIEW_ACTIONS_LOGS")
+ * into a capitalized string (e.g., "View Actions Logs").
+ */
+export function formatActionType(action: string): string {
+  if (!action) return "";
+
+  return action
+    .toLowerCase()
+    .split("_")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
