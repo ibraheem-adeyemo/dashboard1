@@ -20,7 +20,6 @@ export const useTableSlice = (): UseTableReturn => {
 
   const setTableState = useCallback(
     (data: Partial<TableState>) => {
-        console.log(data, '========= data ======');
       dispatch(setTableStateItem(data));
     },
     [dispatch],

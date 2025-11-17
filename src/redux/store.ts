@@ -1,12 +1,13 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { baseApi as api } from '../services/base-api';
-import crudSlice from '../slices/crud/crudSlice';
+// import { baseApi as api } from '../services/base-api';
 import storage from 'redux-persist/lib/storage';
 import { persistStore } from 'redux-persist';
 import { persistReducer } from 'redux-persist';
+import tableSlice from './slices/table/tableSlice';
+import dummySlice from './slices/dummy/dummySlice';
 
 const rootReducer = combineReducers({
-  crud: crudSlice,
+  dummy: dummySlice,
   table: tableSlice,
 //   [api.reducerPath]: api.reducer,
 });
@@ -14,7 +15,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['crud', 'company'],
+  whitelist: ['dummy'],
 };
 
 const persistReducers = persistReducer(persistConfig, rootReducer);
@@ -26,7 +27,7 @@ export const testStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
-      }).concat([api.middleware]),
+      }).concat([]), //[api.middleware]
   });
 };
 
@@ -36,7 +37,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat([api.middleware]),
+    }).concat([]), //[api.middleware]
 });
 
 const persistor = persistStore(store);
