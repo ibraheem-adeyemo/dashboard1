@@ -17,7 +17,6 @@ export const ProductForm = () => {
     const [tags, setTags] = useState([])
 
   const handleTagsChange = (newTags:[]) => {
-    console.log('Tags updated:', newTags);
     setTags(newTags);
   };
 
@@ -82,6 +81,7 @@ export const ProductForm = () => {
           name="category" 
           value={values.category} 
           label='Category'
+          className='bg-[var(--gray-200)]'
           onChange={(e) => {
               handleChange(e);
               updateProductFormData('category', e);
@@ -101,6 +101,7 @@ export const ProductForm = () => {
           name="brand" 
           value={values.brand} 
           label="Brand"
+          className='bg-[var(--gray-200)]'
           onChange={(e) => {
               handleChange(e);
               updateProductFormData('category', e);

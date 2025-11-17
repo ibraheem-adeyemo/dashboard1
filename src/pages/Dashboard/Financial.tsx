@@ -68,6 +68,8 @@ const Financials = () => {
           </div>
           <div className="md:w-2/5 w-full">
             <CreditCardSection
+              title="create card"
+              buttonText="click button"
               imageSrc="/images/credit-card-placeholder.png"
               onButtonClick={() => console.log("clicked")}
             />

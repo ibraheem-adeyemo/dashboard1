@@ -25,3 +25,9 @@ export const categoryData = [
       {text: 'Active'},
       {text: 'Inactive'}
   ]
+
+  export const periodsArr = [
+    {label: 'Daily', value:'day'},
+    {label: 'Monthly', value:'month'},
+    {label: 'Yearly', value: 'year'}
+]

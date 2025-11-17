@@ -27,7 +27,7 @@ export const CustomSelect = ({
     >
       <SelectTrigger
         data-testid={`${testIdPrefix}-trigger`}
-        className={`!focus:border-none !focus:outline-none !focus:ring-0 !active:ring-0 h-8 cursor-pointer border-0 !bg-transparent !ring-0 !outline-none ${triggerClassName}`}
+        className={`!focus:border-none !focus:outline-none !focus:ring-0 !active:ring-0 h-8 cursor-pointer border-0 !ring-0 !outline-none ${triggerClassName}`}
       >
         <SelectValue
           placeholder={placeholder}

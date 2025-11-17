@@ -39,7 +39,7 @@ const CustomFormSelect = ({
         </div> {/*${fieldHasBorder ? borderStyling :  'border-none outline-none'*/}
       <div
         data-testid='custom-textarea'
-        className={`bg-input-fill-enabled relative flex w-full items-center rounded border px-3 py-3 placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none'}` } ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} pl-3 ${inputProps.className}`}
+        className={`relative flex w-full items-center rounded border placeholder:text-neutral-600 disabled:bg-black ${error ? 'border-primary-red-400 text-primary-red-400 outline-primary-red-400' : `text-text-primary ${fieldHasBorder ? borderStyling :  'border-none outline-none'}` } ${inputProps.disabled && 'cursor-not-allowed text-neutral-600'} ${inputProps.className}`}
       >
         <CustomSelect value={value} onChange={onChange} options={options} {...inputProps} />
       </div>

@@ -17,8 +17,11 @@ interface Customer {
   [key: string]: any;
 }
 
+type Period = keyof typeof dashboardData.performance;
+
 export interface InitialStateProps {
-  dashboardStat: typeof dashboardData.performance.day;  
+  selectedPeriod: Period;  
+  dashboardStat: (typeof dashboardData.performance)[Period];  
   products: Array<ProductListingProps>;
   tableItem: TableState;
   orders: typeof orders;
@@ -27,6 +30,7 @@ export interface InitialStateProps {
 }
 
 export const initialState: InitialStateProps = {
+    selectedPeriod: 'day',  
   dashboardStat: dashboardData.performance.day,
   products: products,
   orders: orders,
@@ -67,6 +71,10 @@ const dummySlice = createSlice({
     addCustomer: (state: InitialStateProps, action: PayloadAction<Customer>) => {
       state.customers.push(action.payload);
       state.allCustomersBackup.push(action.payload);
+    },
+    updatePeriod: (state:InitialStateProps, action: PayloadAction<Period>) => {
+        state.selectedPeriod = action.payload;
+        state.dashboardStat = dashboardData.performance[state.selectedPeriod]
     },
 
     // UPDATE — Edit customer by ID
@@ -118,6 +126,7 @@ const dummySlice = createSlice({
 });
 
 export const {
+    updatePeriod,
   setTableStateItem,
   clearTableStateItem,
   addCustomer,
