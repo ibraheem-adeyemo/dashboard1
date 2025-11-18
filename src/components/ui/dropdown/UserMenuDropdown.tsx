@@ -10,7 +10,7 @@ const UserMenuDropdown = () => {
       trigger={
         <span className="flex items-center gap-2 focus:outline-none">
           <Image
-            src="/images/avatar.jpg"
+            src="/images/avatar-ecommerce-1.png"
             alt="User"
             width={32}
             height={32}

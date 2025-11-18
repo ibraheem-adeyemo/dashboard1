@@ -5,27 +5,6 @@ import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
 // import Dropdown from "@/components/ui/dropdown/Dropdown";
 import { data } from "./performance.data";
 
-// export default function SalesPerformance() {
-//   return (
-//     <div className="rounded-2xl border border-neutral bg-neutral-bg dark:border-dark-neutral-border dark:bg-dark-neutral-bg">
-//       <div className="flex items-center justify-between px-6 py-[18px]">
-//         <p className="text-subtitle-semibold font-semibold text-gray-1100 dark:text-gray-dark-1100">
-//           Sales Performance
-//         </p>
-//         <div className="flex items-center gap-4 text-desc">
-//           <p className="text-gray-400 dark:text-gray-dark-400">Today’s</p>
-//           <p className="text-color-brands">Monthly</p>
-//           <p className="text-gray-400 dark:text-gray-dark-400">Yearly</p>
-//           <Dropdown trigger={<KebabIcon />}>
-//             <div></div>
-//           </Dropdown>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// #endregion
 export const StackedAreaChart = () => {
   return (
     <AreaChart
@@ -44,6 +23,23 @@ export const StackedAreaChart = () => {
       }}
     >
       {/* <CartesianGrid strokeDasharray="3 3" /> */}
+      <defs>
+    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+      <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+    </linearGradient>
+
+    <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+      <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+    </linearGradient>
+
+    <linearGradient id="colorAmt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8}/>
+      <stop offset="95%" stopColor="#ffc658" stopOpacity={0}/>
+    </linearGradient>
+  </defs>
+
       <XAxis dataKey="name" />
       <YAxis width="auto" />
       <Tooltip />
@@ -52,21 +48,21 @@ export const StackedAreaChart = () => {
         dataKey="uv"
         stackId="1"
         stroke="#8884d8"
-        fill="#8884d8"
+        fill="url(#colorUv)"
       />
       <Area
         type="monotone"
         dataKey="pv"
         stackId="1"
         stroke="#82ca9d"
-        fill="#82ca9d"
+        fill="url(#colorPv)"
       />
       <Area
         type="monotone"
         dataKey="amt"
         stackId="1"
         stroke="#ffc658"
-        fill="#ffc658"
+        fill="url(#colorAmt)"
       />
     </AreaChart>
   );

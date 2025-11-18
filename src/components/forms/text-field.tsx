@@ -42,7 +42,7 @@ const TextField = ({
     }
   };
   return (
-    <div className='text-sm' data-testid='custom-textfield'>
+    <div className='text-sm w-full' data-testid='custom-textfield'>
       <div className='mb-2 flex w-full items-center justify-between'>
         <InputLabel
           htmlFor={inputProps.id}

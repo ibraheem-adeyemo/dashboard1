@@ -66,3 +66,8 @@ export const productSchema = Yup.object().shape({
     )
     .min(1, 'At least one image is required')
 });
+
+export const LoginSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string().min(4).required("Password is required"),
+  });
