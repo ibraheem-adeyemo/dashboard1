@@ -1,10 +1,30 @@
 "use client";
 
+import { useAppSelector } from "@/hooks/reduxHooks";
+import { useAlert } from "@/hooks/useAlert";
 import { LoginForm } from "@/pages/auths/LoginForm";
+import { useLogoutMutation } from "@/redux/services/login-api";
+import { InitialStateProps, selectDummyData } from "@/redux/slices/dummy/dummySlice";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function LoginPage() {
 
+    const state:InitialStateProps = useAppSelector(selectDummyData);
+    const userLogginStatus = state.isUserLoggedIn;
+    const router = useRouter();
+
+    const { showError } = useAlert()
+    useEffect(() => {
+      if(state.isUserLoggedIn){
+        router.push("/dashboard")
+      }else {
+          console.log(state)
+          showError(state?.info?.message)
+      }
+    }, [state.isUserLoggedIn, state.info])
+    
   return (
     <div className="flex items-center  flex-col gap-10">
         <div className="flex flex-col items-center">

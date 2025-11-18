@@ -27,6 +27,9 @@ export interface InitialStateProps {
   orders: typeof orders;
   customers: Customer[];
   allCustomersBackup: Customer[]; // for resetting after filtering
+  users: Customer[];
+  info: {status: string; message: string},
+  isUserLoggedIn: boolean
 }
 
 export const initialState: InitialStateProps = {
@@ -34,12 +37,15 @@ export const initialState: InitialStateProps = {
   dashboardStat: dashboardData.performance.day,
   products: products,
   orders: orders,
-  customers: user.users,
-  allCustomersBackup: user.users, // keep original copy
+  customers: user.customers,
+  allCustomersBackup: user.customers, // keep original copy
   tableItem: {
     pageSize: 10,
     pageNumber: 1,
   },
+  users: [],
+  info: {status: '', message: ''},
+  isUserLoggedIn: false
 };
 
 const dummySlice = createSlice({
@@ -71,6 +77,28 @@ const dummySlice = createSlice({
     addCustomer: (state: InitialStateProps, action: PayloadAction<Customer>) => {
       state.customers.push(action.payload);
       state.allCustomersBackup.push(action.payload);
+    },
+    registerAUser: (state: InitialStateProps, action: PayloadAction) => {
+        const lastUser = state.users?.reverse()[0] || undefined;
+
+        const userRegistered = state.users?.find(user => user.email === action.payload.email)
+        if(userRegistered) {
+            state.info = {status: 'error', message: 'You have already created an account'}
+            return
+        }
+        const id = lastUser ? Number(lastUser.id) + 1: 1
+        state.users.push({id, ...action.payload})
+        state.info = {status: 'success', message: 'You have successfuly created an account'}
+    },
+    login: (state: InitialStateProps, action: PayloadAction) => {
+        console.log(state, action.payload, 'payload    ====1')
+        const userRegistered = state.users.find(user => user.email === action.payload.email)
+        if(userRegistered && userRegistered.password === action.payload.password ) {
+            state.isUserLoggedIn = true;
+        } else {
+            console.log(action.payload, 'payload    ====2')
+            state.info = { status: "error", message: "User can not be found"}
+        }
     },
     updatePeriod: (state:InitialStateProps, action: PayloadAction<Period>) => {
         state.selectedPeriod = action.payload;
@@ -134,6 +162,8 @@ export const {
   deleteCustomer,
   filterCustomers,
   resetCustomers,
+  registerAUser,
+  login
 } = dummySlice.actions;
 
 export const selectDummyData = (state: RootState): InitialStateProps => {

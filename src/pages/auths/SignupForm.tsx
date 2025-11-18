@@ -36,7 +36,7 @@ export const SignupForm = () => {
             className="bg-transparent border"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
-              updateSignupFormData('email', e.target.value);
+              updateSignupFormData('firstName', e.target.value);
             }}
             onBlur={handleBlur}
             error={touched.firstName && Boolean(errors.firstName)}
@@ -56,7 +56,7 @@ export const SignupForm = () => {
             className="bg-transparent border w-[100%]"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
-              updateSignupFormData('email', e.target.value);
+              updateSignupFormData('lastName', e.target.value);
             }}
             onBlur={handleBlur}
             error={touched.lastName && Boolean(errors.lastName)}
@@ -116,7 +116,7 @@ export const SignupForm = () => {
             value={values.confirmPassword}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               handleChange(e);
-              updateSignupFormData('password', e.target.value);
+              updateSignupFormData('confirmPassword', e.target.value);
             }}
             fieldHasBorder
             className="bg-transparent border border-[var(--neutral-border)]"
@@ -129,7 +129,7 @@ export const SignupForm = () => {
             }}
           /> 
 
-              <Button text="Register" className="mt-10" />
+              <Button text="Register" className="mt-10" disabled={!isValid} />
         </Form>
         
          )}

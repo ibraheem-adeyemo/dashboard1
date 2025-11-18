@@ -1,4 +1,6 @@
+import { login, registerAUser } from "@/redux/slices/dummy/dummySlice";
 import { useState } from "react";
+import { useAppDispatch } from "./reduxHooks";
 
 interface ILoginFormProp {
   email: string;
@@ -16,6 +18,8 @@ interface ISignupFormProp {
 
 export const useAuthForm = () => {
     
+    const appDispatch = useAppDispatch();
+
   const initialLoginValue: ILoginFormProp = {
     email: "",
     password: "",
@@ -38,7 +42,6 @@ export const useAuthForm = () => {
     useState<ISignupFormProp>(initialSignupValue);
 
   const updateLoginFormData = (field: keyof ILoginFormProp, value: any) => {
-      console.log(field, value)
     setLoginFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -58,6 +61,7 @@ export const useAuthForm = () => {
   const handleLoginSubmit = () => {
     console.log("LOGIN DATA:", loginFormData);
     // add API request here...
+    appDispatch(login(loginFormData));
   };
 
   const handleSignupSubmit = () => {
@@ -68,6 +72,7 @@ export const useAuthForm = () => {
 
     console.log("SIGNUP DATA:", signupFormData);
     // add signup API request here...
+    appDispatch(registerAUser(signupFormData));
   };
 
   return {
