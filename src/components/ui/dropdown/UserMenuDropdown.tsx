@@ -3,8 +3,20 @@
 import Dropdown from "./Dropdown";
 import DropdownItem from "./DropdownItem";
 import Image from "next/image";
+import { useAppDispatch } from "@/hooks/reduxHooks";
+import ConfirmationModal from "../modals/confirmation-modal";
+import { useConfirmationDialog } from "@/hooks/useConfirmationDialog";
+import { logout } from "@/redux/slices/dummy/dummySlice";
 
 const UserMenuDropdown = () => {
+
+    const appDispatch = useAppDispatch();
+    const { open, setOpen } = useConfirmationDialog({})
+    const LogoutConfirrmationModal = () => {
+        return(
+            <ConfirmationModal open={open} handleClose={()=>setOpen(false)} onConfirm={()=>appDispatch(logout())} />
+        )
+    }
   return (
     <Dropdown
       trigger={
@@ -22,9 +34,10 @@ const UserMenuDropdown = () => {
         </span>
       }
     >
+        <LogoutConfirrmationModal />
       <DropdownItem href="/profile">Profile</DropdownItem>
       <DropdownItem href="/settings">Settings</DropdownItem>
-      <DropdownItem onClick={() => alert("Logging out...")}>
+      <DropdownItem onClick={() => setOpen(true)}>
         Logout
       </DropdownItem>
     </Dropdown>

@@ -100,6 +100,9 @@ const dummySlice = createSlice({
             state.info = { status: "error", message: "User can not be found"}
         }
     },
+    logout: (state: InitialStateProps, action: PayloadAction) => {
+        state.isUserLoggedIn = false
+    },
     updatePeriod: (state:InitialStateProps, action: PayloadAction<Period>) => {
         state.selectedPeriod = action.payload;
         state.dashboardStat = dashboardData.performance[state.selectedPeriod]
@@ -163,7 +166,8 @@ export const {
   filterCustomers,
   resetCustomers,
   registerAUser,
-  login
+  login,
+  logout
 } = dummySlice.actions;
 
 export const selectDummyData = (state: RootState): InitialStateProps => {
