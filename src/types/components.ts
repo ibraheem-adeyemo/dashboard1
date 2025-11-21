@@ -27,20 +27,19 @@ interface BaseSelectFieldProps {
 }
 
 type BasePasswordFieldProps = {
-    hasStrengthMeter?: boolean;
+  hasStrengthMeter?: boolean;
 };
 
 export type CustomInputProps = {
-    preAppend?: React.ReactNode;
-    postAppend?: React.ReactNode;
-    isLoading?: boolean;
-    error?: string | ReactNode;
-    inputType?: 'string' | 'number' | 'currency' | 'password';
-    forgotPassword?: boolean;
-    inputProps?:InputProps;
-  } & Omit<InputProps, 'size'> &
-    Omit<CustomLabelProps, 'label' | 'error'>;
-
+  preAppend?: React.ReactNode;
+  postAppend?: React.ReactNode;
+  isLoading?: boolean;
+  error?: string | ReactNode;
+  inputType?: "string" | "number" | "currency" | "password";
+  forgotPassword?: boolean;
+  inputProps?: InputProps;
+} & Omit<InputProps, "size"> &
+  Omit<CustomLabelProps, "label" | "error">;
 
 export type CustomLabelProps = {
   error?: string;
@@ -61,20 +60,20 @@ export type OptionProp = {
 };
 
 export type CustomSelectProps = {
-    value: OptionProp;
-    onChange: (value: OptionProp | OptionProp[]) => void;
-    options: OptionProp[];
-    placeholder?: string;
-    side?: "top" | "bottom" | "left" | "right";
-    triggerClassName?: string;
-    contentClassName?: string;
-    testIdPrefix?: string;
-  };
+  value: OptionProp;
+  onChange: (value: OptionProp | OptionProp[]) => void;
+  options: OptionProp[];
+  placeholder?: string;
+  side?: "top" | "bottom" | "left" | "right";
+  triggerClassName?: string;
+  contentClassName?: string;
+  testIdPrefix?: string;
+};
 
 export type SpecialBorderProps = {
-    fieldHasBorder?: boolean;
-    borderStyling?: string;
-}
+  fieldHasBorder?: boolean;
+  borderStyling?: string;
+};
 
 export interface SelectFieldProps extends BaseSelectFieldProps {
   id: string;
@@ -98,21 +97,21 @@ export interface SelectFieldProps extends BaseSelectFieldProps {
 }
 
 export type messageType = {
-    type: 'error' | 'success' | 'info';
-    message: string;
-  };
+  type: "error" | "success" | "info";
+  message: string;
+};
 
 export type CustomTextAreaProps = {
-    messageType?: messageType;
-    isLoading?: boolean;
-    error?: string | ReactNode;
-    labelStyles?: string;
-    isRequired?: boolean;
-    label?: string;
-    borderStyling?: string;
-    fieldHasBorder: boolean,
-    maxLength?: number
-    } & Omit<TextAreaProps, 'size'>;
+  messageType?: messageType;
+  isLoading?: boolean;
+  error?: string | ReactNode;
+  labelStyles?: string;
+  isRequired?: boolean;
+  label?: string;
+  borderStyling?: string;
+  fieldHasBorder: boolean;
+  maxLength?: number;
+} & Omit<TextAreaProps, "size">;
 
 export type CustomFieldProps = {
   messageType?: messageType;
@@ -124,4 +123,4 @@ export type CustomFieldProps = {
   isLoading?: boolean;
 } & CustomLabelProps &
   CustomInputProps &
-  BasePasswordFieldProps;    
+  BasePasswordFieldProps;

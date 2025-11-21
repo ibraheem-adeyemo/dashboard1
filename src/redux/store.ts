@@ -5,10 +5,14 @@ import { persistStore } from 'redux-persist';
 import { persistReducer } from 'redux-persist';
 import tableSlice from './slices/table/tableSlice';
 import dummySlice from './slices/dummy/dummySlice';
+import cartSlice from './slices/cartSlice';
+import wishlistSlice from './slices/wishlistSlice';
 
 const rootReducer = combineReducers({
   dummy: dummySlice,
   table: tableSlice,
+  cart: cartSlice,
+  wishList: wishlistSlice
 //   [api.reducerPath]: api.reducer,
 });
 

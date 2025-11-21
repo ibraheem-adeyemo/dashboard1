@@ -38,6 +38,8 @@ export const authProtectedBaseQuery: BaseQueryFn = async (args, api, extraOption
 };
 
 export const baseApi = createApi({
+  reducerPath: "api",
   baseQuery: authProtectedBaseQuery,
+  tagTypes: ['Products', 'Cart', 'Wishlist', 'User', 'Orders'],
   endpoints: () => ({}),
 });

@@ -14,13 +14,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
       enableSystem
       disableTransitionOnChange
     >
-
       <Provider store={store}>
-          <AlertProvider>
-              {children}
-              <AlertList />
-              </AlertProvider>
-            </Provider>
+        <AlertProvider>
+          {children}
+          <AlertList />
+        </AlertProvider>
+      </Provider>
     </ThemeProvider>
   );
 }
