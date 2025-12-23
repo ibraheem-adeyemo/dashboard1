@@ -2,9 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import SearchBar from "./SearchBar";
-import BrowseDropdown from "@/components/ui/dropdown/BrowserDropdown";
-import MessageDropdown from "@/components/ui/dropdown/MessageDropdown";
 import NotificationDropdown from "@/components/ui/dropdown/NotificationDropdown";
 import { CustomSelect } from "@/components/ui/select/custom-select";
 import UserMenuDropdown from "@/components/ui/dropdown/UserMenuDropdown";
@@ -15,12 +12,12 @@ import { useAppDispatch, useAppSelector } from "@/hooks/reduxHooks";
 import { selectDummyData, updatePeriod } from "@/redux/slices/dummy/dummySlice";
 
 const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
-    const state = useAppSelector(selectDummyData);
+  const state = useAppSelector(selectDummyData);
 
-    const appDispatch = useAppDispatch()
-    const onSelectedPeriodChange = (value:OptionProp| OptionProp[]) => {
-        appDispatch(updatePeriod(value))
-    }
+  const appDispatch = useAppDispatch();
+  const onSelectedPeriodChange = (value: OptionProp | OptionProp[]) => {
+    appDispatch(updatePeriod(value));
+  };
 
   return (
     <header className="flex bg-neutral-bg shadow-sm h-[5rem] py-auto">
@@ -56,8 +53,13 @@ const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
         <div className="hidden w-[max(40rem,60%)] md:flex">
           {/* <SearchBar /> */}
           <div className="w-[200px]">
-            <CustomSelect options={periodsArr} value={state.selectedPeriod} onChange={onSelectedPeriodChange} triggerClassName="bg-[var(--neutral-200)]" />
-        </div>
+            <CustomSelect
+              options={periodsArr}
+              value={state.selectedPeriod}
+              onChange={onSelectedPeriodChange}
+              triggerClassName="bg-[var(--neutral-200)]"
+            />
+          </div>
         </div>
 
         {/* Right section */}

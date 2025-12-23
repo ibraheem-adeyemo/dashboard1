@@ -1,12 +1,6 @@
 // src/components/layout/Sidebar/sidebar.data.ts
 import { IconType } from "react-icons";
-import {
-  FaTachometerAlt,
-  FaShoppingCart,
-  FaChartPie,
-  FaEnvelope,
-  FaMoneyBill,
-} from "react-icons/fa";
+import { FaShoppingCart, FaChartPie, FaEnvelope } from "react-icons/fa";
 import { CiHome } from "react-icons/ci";
 import { FiPieChart } from "react-icons/fi";
 import { PiCubeThin } from "react-icons/pi";
@@ -38,15 +32,15 @@ export const sidebarData: SidebarItem[] = [
     label: "Products",
     icon: PiCubeThin,
     submenu: [
-        {
-            label: "All products",
-            href: "/dashboard/products",
-        },
-        {
-            label: "New product",
-            href: "/dashboard/products/product-form"
-        }
-    ]
+      {
+        label: "All products",
+        href: "/dashboard/products",
+      },
+      {
+        label: "New product",
+        href: "/dashboard/products/product-form",
+      },
+    ],
   },
   {
     label: "Inventory",

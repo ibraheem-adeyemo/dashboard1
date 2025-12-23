@@ -1,12 +1,12 @@
-import { CancelIcon } from '@/assets/icons/dashboardIcons';
-import { AlertConsumer } from '@/contexts/alert-context';
-import { useEffect } from 'react';
+import { CancelIcon } from "@/assets/icons/dashboardIcons";
+import { AlertConsumer } from "@/contexts/alert-context";
+import { useEffect } from "react";
 
 const alertStyles = {
   success:
-    'bg-active-green-100 border-l-active-green-400 text-active-green-600 border-active-green-200',
+    "bg-active-green-100 border-l-active-green-400 text-active-green-600 border-active-green-200",
   error:
-    'bg-active-yellow-100 border-l-active-yellow-400 text-active-yellow-600 border-active-yellow-200',
+    "bg-active-yellow-100 border-l-active-yellow-400 text-active-yellow-600 border-active-yellow-200",
 };
 
 interface AlertProps {
@@ -22,7 +22,7 @@ export const Alert = ({
   id,
   title,
   message,
-  type = 'success',
+  type = "success",
   onDismiss,
   autoDismiss = 3000,
 }: AlertProps) => {
@@ -36,20 +36,20 @@ export const Alert = ({
   return (
     <div
       className={`relative z-[1000] min-w-[320px] rounded-md border-l-6 p-4 shadow-md transition-all duration-300 ${alertStyles[type]}`}
-      role='alert'
+      role="alert"
     >
-      <div className='flex items-start justify-between'>
-        <div className='flex-1'>
-          <h3 className='text-[1rem] font-[700]'>{title}</h3>
-          <p className='mt-1 text-[0.9rem] font-[400]'>{message}</p>
+      <div className="flex items-start justify-between">
+        <div className="flex-1">
+          <h3 className="text-[1rem] font-[700]">{title}</h3>
+          <p className="mt-1 text-[0.9rem] font-[400]">{message}</p>
         </div>
         <button
-          className='ml-2 cursor-pointer text-gray-600 hover:text-black focus:outline-none'
+          className="ml-2 cursor-pointer text-gray-600 hover:text-black focus:outline-none"
           onClick={() => onDismiss(id)}
-          aria-label='Dismiss notification'
-          title='Dismiss notification'
+          aria-label="Dismiss notification"
+          title="Dismiss notification"
         >
-          <CancelIcon className='h-6 w-6 text-neutral-700' />
+          <CancelIcon className="h-6 w-6 text-neutral-700" />
         </button>
       </div>
     </div>
@@ -62,7 +62,7 @@ export const AlertList = () => {
   if (alerts.length === 0) return null;
 
   return (
-    <div className='fixed top-4 left-1/2 z-[999999] w-full max-w-md -translate-x-1/2 transform space-y-2 px-4'>
+    <div className="fixed top-4 left-1/2 z-[999999] w-full max-w-md -translate-x-1/2 transform space-y-2 px-4">
       {alerts.map((alert) => (
         <Alert key={alert.id} {...alert} onDismiss={removeAlert} />
       ))}

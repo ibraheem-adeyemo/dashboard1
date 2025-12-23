@@ -29,7 +29,7 @@ export const ProductTable = ({
   isLoading,
   resultCount = data.length,
 }: ProductTableProps) => {
-    const onDropdown = () => console.log('e');
+  const onDropdown = () => console.log("e");
   const columns: ColumnDef<ProductListingProps>[] = [
     {
       accessorKey: "image",
@@ -106,10 +106,10 @@ export const ProductTable = ({
 
   return (
     <div className="text-gray-500 border border-button-outline-stroke-active">
-        <div className="flex justify-between m-[2rem]">
-            <span className="font-bold">Listings</span>
-            <RowActions onSelect={onDropdown} options={option2} />
-        </div>
+      <div className="flex justify-between m-[2rem]">
+        <span className="font-bold">Listings</span>
+        <RowActions onSelect={onDropdown} options={option2} />
+      </div>
       <DataTable
         columns={columns}
         data={data}

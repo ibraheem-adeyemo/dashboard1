@@ -17,8 +17,7 @@ interface ISignupFormProp {
 }
 
 export const useAuthForm = () => {
-    
-    const appDispatch = useAppDispatch();
+  const appDispatch = useAppDispatch();
 
   const initialLoginValue: ILoginFormProp = {
     email: "",
@@ -34,7 +33,6 @@ export const useAuthForm = () => {
     confirmPassword: "",
   };
 
-  
   const [loginFormData, setLoginFormData] =
     useState<ILoginFormProp>(initialLoginValue);
 
@@ -48,10 +46,7 @@ export const useAuthForm = () => {
     }));
   };
 
-  const updateSignupFormData = (
-    field: keyof ISignupFormProp,
-    value: any
-  ) => {
+  const updateSignupFormData = (field: keyof ISignupFormProp, value: any) => {
     setSignupFormData((prev) => ({
       ...prev,
       [field]: value,

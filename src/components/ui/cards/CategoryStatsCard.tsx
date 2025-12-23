@@ -1,6 +1,12 @@
 import React from "react";
 
-const CategoryStatsCard = ({ title, data }: {title:string; data:{label: string; amount: number; color: string; percentage: number}[]}) => {
+const CategoryStatsCard = ({
+  title,
+  data,
+}: {
+  title: string;
+  data: { label: string; amount: number; color: string; percentage: number }[];
+}) => {
   return (
     <div className="rounded-2xl border bg-neutral-bg border-[var(--neutral-border)] p-6">
       <div className="mb-6 flex items-center justify-between">

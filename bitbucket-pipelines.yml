@@ -13,7 +13,7 @@ pipelines:
 
     bugfix/*:
       import: bitbucket-pipeline-templates:shared/javascript-docker:on-pull-request
-    '**':
+    "**":
       import: bitbucket-pipeline-templates:main:check-branch-name
 
   branches:

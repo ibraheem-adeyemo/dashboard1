@@ -31,13 +31,14 @@ export interface ProductsQueryParams {
   limit?: number;
   categoryId?: string;
   search?: string;
-  sortBy?: 'price' | 'name' | 'rating' | 'newest';
-  order?: 'asc' | 'desc';
+  sortBy?: "price" | "name" | "rating" | "newest";
+  order?: "asc" | "desc";
   minPrice?: number;
   maxPrice?: number;
 }
 
-type Builder = ReturnType<typeof baseApi["injectEndpoints"]> extends {
+type Builder =
+  ReturnType<(typeof baseApi)["injectEndpoints"]> extends {
     endpoints: (builder: infer T) => any;
   }
     ? T
@@ -47,39 +48,42 @@ export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query<ProductsResponse, ProductsQueryParams>({
       query: (params) => ({
-        url: '/products',
+        url: "/products",
         params,
       }),
       providesTags: (result) =>
         result
           ? [
-              ...result.products.map(({ id }) => ({ type: 'Products' as const, id })),
-              { type: 'Products', id: 'LIST' },
+              ...result.products.map(({ id }) => ({
+                type: "Products" as const,
+                id,
+              })),
+              { type: "Products", id: "LIST" },
             ]
-          : [{ type: 'Products', id: 'LIST' }],
+          : [{ type: "Products", id: "LIST" }],
     }),
 
     getProductById: builder.query<Product, string>({
       query: (id) => `/products/${id}`,
-      providesTags: (result, error, id) => [{ type: 'Products', id }],
+      providesTags: (result, error, id) => [{ type: "Products", id }],
     }),
 
     searchProducts: builder.query<ProductsResponse, string>({
       query: (searchTerm) => ({
-        url: '/products/search',
+        url: "/products/search",
         params: { q: searchTerm },
       }),
     }),
 
     getFeaturedProducts: builder.query<Product[], void>({
-      query: () => '/products/featured',
-      providesTags: [{ type: 'Products', id: 'FEATURED' }],
+      query: () => "/products/featured",
+      providesTags: [{ type: "Products", id: "FEATURED" }],
     }),
 
     getProductsByCategory: builder.query<ProductsResponse, string>({
       query: (categoryId) => `/products/category/${categoryId}`,
       providesTags: (result, error, categoryId) => [
-        { type: 'Products', id: categoryId },
+        { type: "Products", id: categoryId },
       ],
     }),
   }),

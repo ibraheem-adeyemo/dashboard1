@@ -6,7 +6,12 @@ const CreditCardSection = ({
   imageSrc,
   buttonText = "Add new card",
   onButtonClick,
-}: {title:string; imageSrc:string; buttonText:string; onButtonClick:()=>void }) => {
+}: {
+  title: string;
+  imageSrc: string;
+  buttonText: string;
+  onButtonClick: () => void;
+}) => {
   return (
     <div className="rounded-2xl border border-[var(--neutral-border)] bg-neutral-bg p-3 mb-4">
       {/* Title */}

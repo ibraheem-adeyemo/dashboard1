@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { SidebarItem as SidebarItemType } from "./sidebar.data";
 import SidebarSubmenu from "./SidebarSubMenu";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa6"
+import { FaAngleDown, FaAngleUp } from "react-icons/fa6";
 
 const SidebarItem = ({ item }: { item: SidebarItemType }) => {
   const [open, setOpen] = useState(false);

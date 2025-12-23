@@ -53,15 +53,15 @@ export const ExpensesCard = () => {
   );
 };
 
-export default function ExpensesChart({ 
+export default function ExpensesChart({
   title = "All expenses",
   categories = [
-    { name: 'Shopping', percentage: 70, color: '#10b981' },
-    { name: 'Workplace', percentage: 46, color: '#8b5cf6' },
-    { name: 'Projects', percentage: 15, color: '#3b82f6' },
-    { name: 'Other', percentage: 67, color: '#ef4444' }
+    { name: "Shopping", percentage: 70, color: "#10b981" },
+    { name: "Workplace", percentage: 46, color: "#8b5cf6" },
+    { name: "Projects", percentage: 15, color: "#3b82f6" },
+    { name: "Other", percentage: 67, color: "#ef4444" },
   ],
-  description = "Get a clear view of your spending — track, analyze, and stay in control."
+  description = "Get a clear view of your spending — track, analyze, and stay in control.",
 }) {
   return (
     <div className="w-full max-w-2xl bg-neutral-bg  rounded-lg shadow-sm p-6">
@@ -77,7 +77,7 @@ export default function ExpensesChart({
       <div className="flex flex-wrap gap-4 mb-8">
         {categories.map((category, index) => (
           <div key={index} className="flex items-center gap-2">
-            <div 
+            <div
               className="w-2 h-2 rounded-full"
               style={{ backgroundColor: category.color }}
             />
@@ -127,9 +127,7 @@ export default function ExpensesChart({
       </div>
 
       {/* Description */}
-      <p className="text-sm leading-relaxed">
-        {description}
-      </p>
+      <p className="text-sm leading-relaxed">{description}</p>
     </div>
   );
 }

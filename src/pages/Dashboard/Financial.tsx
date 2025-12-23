@@ -4,7 +4,9 @@ import React from "react";
 import { TrendingUp, DollarSign, Wallet, PieChart } from "lucide-react";
 import { StatCard2 } from "@/components/ui/cards/statCard";
 import { WalletCard } from "@/components/ui/cards/WalletCard";
-import ExpensesChart, { ExpensesCard } from "@/components/ui/cards/ExpensesCard";
+import ExpensesChart, {
+  ExpensesCard,
+} from "@/components/ui/cards/ExpensesCard";
 import { BestSellersCard } from "@/components/ui/cards/BestSellersCard";
 import CategoryStatsCard from "@/components/ui/cards/CategoryStatsCard";
 import { categoryData } from "@/redux/store";

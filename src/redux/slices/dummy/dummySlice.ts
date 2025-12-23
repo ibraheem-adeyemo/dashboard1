@@ -20,20 +20,20 @@ interface Customer {
 type Period = keyof typeof dashboardData.performance;
 
 export interface InitialStateProps {
-  selectedPeriod: Period;  
-  dashboardStat: (typeof dashboardData.performance)[Period];  
+  selectedPeriod: Period;
+  dashboardStat: (typeof dashboardData.performance)[Period];
   products: Array<ProductListingProps>;
   tableItem: TableState;
   orders: typeof orders;
   customers: Customer[];
   allCustomersBackup: Customer[]; // for resetting after filtering
   users: Customer[];
-  info: {status: string; message: string},
-  isUserLoggedIn: boolean
+  info: { status: string; message: string };
+  isUserLoggedIn: boolean;
 }
 
 export const initialState: InitialStateProps = {
-    selectedPeriod: 'day',  
+  selectedPeriod: "day",
   dashboardStat: dashboardData.performance.day,
   products: products,
   orders: orders,
@@ -44,8 +44,8 @@ export const initialState: InitialStateProps = {
     pageNumber: 1,
   },
   users: [],
-  info: {status: '', message: ''},
-  isUserLoggedIn: false
+  info: { status: "", message: "" },
+  isUserLoggedIn: false,
 };
 
 const dummySlice = createSlice({
@@ -53,7 +53,7 @@ const dummySlice = createSlice({
   initialState,
   reducers: {
     /** ---------------- TABLE CONTROLS ------------------- **/
-    setTableStateItem: (state: InitialStateProps, action:PayloadAction) => {
+    setTableStateItem: (state: InitialStateProps, action: PayloadAction) => {
       if (typeof action.payload === "object") {
         state.tableItem = _.mergeWith(
           state.tableItem,
@@ -62,56 +62,72 @@ const dummySlice = createSlice({
             if (_.isArray(objValue)) {
               return srcValue;
             }
-          }
+          },
         );
       } else {
         console.log("payload is not an object");
       }
     },
 
-    clearTableStateItem: (state:InitialStateProps) => {
+    clearTableStateItem: (state: InitialStateProps) => {
       state.tableItem = initialState.tableItem;
     },
 
     // CREATE — Add a new customer
-    addCustomer: (state: InitialStateProps, action: PayloadAction<Customer>) => {
+    addCustomer: (
+      state: InitialStateProps,
+      action: PayloadAction<Customer>,
+    ) => {
       state.customers.push(action.payload);
       state.allCustomersBackup.push(action.payload);
     },
     registerAUser: (state: InitialStateProps, action: PayloadAction) => {
-        const lastUser = state.users?.reverse()[0] || undefined;
+      const lastUser = state.users?.reverse()[0] || undefined;
 
-        const userRegistered = state.users?.find(user => user.email === action.payload.email)
-        if(userRegistered) {
-            state.info = {status: 'error', message: 'You have already created an account'}
-            return
-        }
-        const id = lastUser ? Number(lastUser.id) + 1: 1
-        state.users.push({id, ...action.payload})
-        state.info = {status: 'success', message: 'You have successfuly created an account'}
+      const userRegistered = state.users?.find(
+        (user) => user.email === action.payload.email,
+      );
+      if (userRegistered) {
+        state.info = {
+          status: "error",
+          message: "You have already created an account",
+        };
+        return;
+      }
+      const id = lastUser ? Number(lastUser.id) + 1 : 1;
+      state.users.push({ id, ...action.payload });
+      state.info = {
+        status: "success",
+        message: "You have successfuly created an account",
+      };
     },
     login: (state: InitialStateProps, action: PayloadAction) => {
-        console.log(state, action.payload, 'payload    ====1')
-        const userRegistered = state.users.find(user => user.email === action.payload.email)
-        if(userRegistered && userRegistered.password === action.payload.password ) {
-            state.isUserLoggedIn = true;
-        } else {
-            console.log(action.payload, 'payload    ====2')
-            state.info = { status: "error", message: "User can not be found"}
-        }
+      console.log(state, action.payload, "payload    ====1");
+      const userRegistered = state.users.find(
+        (user) => user.email === action.payload.email,
+      );
+      if (
+        userRegistered &&
+        userRegistered.password === action.payload.password
+      ) {
+        state.isUserLoggedIn = true;
+      } else {
+        console.log(action.payload, "payload    ====2");
+        state.info = { status: "error", message: "User can not be found" };
+      }
     },
     logout: (state: InitialStateProps, action: PayloadAction) => {
-        state.isUserLoggedIn = false
+      state.isUserLoggedIn = false;
     },
-    updatePeriod: (state:InitialStateProps, action: PayloadAction<Period>) => {
-        state.selectedPeriod = action.payload;
-        state.dashboardStat = dashboardData.performance[state.selectedPeriod]
+    updatePeriod: (state: InitialStateProps, action: PayloadAction<Period>) => {
+      state.selectedPeriod = action.payload;
+      state.dashboardStat = dashboardData.performance[state.selectedPeriod];
     },
 
     // UPDATE — Edit customer by ID
     editCustomer: (
       state: InitialStateProps,
-      action: PayloadAction<{ id: string | number; data: Partial<Customer> }>
+      action: PayloadAction<{ id: string | number; data: Partial<Customer> }>,
     ) => {
       const { id, data } = action.payload;
       const index = state.customers.findIndex((u) => u.id === id);
@@ -120,7 +136,9 @@ const dummySlice = createSlice({
         state.customers[index] = { ...state.customers[index], ...data };
       }
 
-      const backupIndex = state.allCustomersBackup.findIndex((u) => u.id === id);
+      const backupIndex = state.allCustomersBackup.findIndex(
+        (u) => u.id === id,
+      );
       if (backupIndex !== -1) {
         state.allCustomersBackup[backupIndex] = {
           ...state.allCustomersBackup[backupIndex],
@@ -129,15 +147,20 @@ const dummySlice = createSlice({
       }
     },
 
-    deleteCustomer: (state: InitialStateProps, action: PayloadAction<string | number>) => {
+    deleteCustomer: (
+      state: InitialStateProps,
+      action: PayloadAction<string | number>,
+    ) => {
       const id = action.payload;
       state.customers = state.customers.filter((u) => u.id !== id);
-      state.allCustomersBackup = state.allCustomersBackup.filter((u) => u.id !== id);
+      state.allCustomersBackup = state.allCustomersBackup.filter(
+        (u) => u.id !== id,
+      );
     },
 
     filterCustomers: (
       state: InitialStateProps,
-      action: PayloadAction<{ [key: string]: string | number }>
+      action: PayloadAction<{ [key: string]: string | number }>,
     ) => {
       const filters = action.payload;
 
@@ -145,7 +168,7 @@ const dummySlice = createSlice({
         Object.entries(filters).every(([key, value]) => {
           const field = String(user[key] ?? "").toLowerCase();
           return field.includes(String(value).toLowerCase());
-        })
+        }),
       );
     },
 
@@ -157,7 +180,7 @@ const dummySlice = createSlice({
 });
 
 export const {
-    updatePeriod,
+  updatePeriod,
   setTableStateItem,
   clearTableStateItem,
   addCustomer,
@@ -167,11 +190,11 @@ export const {
   resetCustomers,
   registerAUser,
   login,
-  logout
+  logout,
 } = dummySlice.actions;
 
 export const selectDummyData = (state: RootState): InitialStateProps => {
-    return state.dummy;
+  return state.dummy;
 };
 
 export default dummySlice.reducer;

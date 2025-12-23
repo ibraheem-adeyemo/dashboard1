@@ -5,7 +5,7 @@ import PurchaseTable from "@/components/table/recentPurchases/PurchaseTable";
 
 export default function DashboardPage() {
   return (
-    <section>      
+    <section>
       <SalesActivities />
       <DashboardGrid />
       {/* <PurchasesTable items={purchases} /> */}

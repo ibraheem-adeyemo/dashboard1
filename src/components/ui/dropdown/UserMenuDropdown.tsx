@@ -9,14 +9,17 @@ import { useConfirmationDialog } from "@/hooks/useConfirmationDialog";
 import { logout } from "@/redux/slices/dummy/dummySlice";
 
 const UserMenuDropdown = () => {
-
-    const appDispatch = useAppDispatch();
-    const { open, setOpen } = useConfirmationDialog({})
-    const LogoutConfirrmationModal = () => {
-        return(
-            <ConfirmationModal open={open} handleClose={()=>setOpen(false)} onConfirm={()=>appDispatch(logout())} />
-        )
-    }
+  const appDispatch = useAppDispatch();
+  const { open, setOpen } = useConfirmationDialog({});
+  const LogoutConfirrmationModal = () => {
+    return (
+      <ConfirmationModal
+        open={open}
+        handleClose={() => setOpen(false)}
+        onConfirm={() => appDispatch(logout())}
+      />
+    );
+  };
   return (
     <Dropdown
       trigger={
@@ -34,12 +37,10 @@ const UserMenuDropdown = () => {
         </span>
       }
     >
-        <LogoutConfirrmationModal />
+      <LogoutConfirrmationModal />
       <DropdownItem href="/profile">Profile</DropdownItem>
       <DropdownItem href="/settings">Settings</DropdownItem>
-      <DropdownItem onClick={() => setOpen(true)}>
-        Logout
-      </DropdownItem>
+      <DropdownItem onClick={() => setOpen(true)}>Logout</DropdownItem>
     </Dropdown>
   );
 };

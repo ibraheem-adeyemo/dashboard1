@@ -62,7 +62,11 @@ const PurchaseTable = ({
     {
       id: "actions",
       header: "Actions",
-      cell: ({ row }: RowProps) => <div><Link href="">View details</Link></div>,
+      cell: ({ row }: RowProps) => (
+        <div>
+          <Link href="">View details</Link>
+        </div>
+      ),
     },
   ];
 
