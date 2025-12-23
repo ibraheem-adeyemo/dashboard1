@@ -47,11 +47,15 @@ export const SignupForm = () => {
                   updateSignupFormData("firstName", e.target.value);
                 }}
                 onBlur={handleBlur}
-                error={touched.firstName && Boolean(errors.firstName)}
-                messageType={{
-                  type: errors,
-                  message: touched.firstName && errors.firstName,
-                }}
+                error={touched.firstName ? errors.firstName : undefined}
+                messageType={
+                  touched.firstName && errors.firstName
+                    ? {
+                        type: "error",
+                        message: errors.firstName,
+                      }
+                    : undefined
+                }
               />
 
               <TextField
@@ -67,11 +71,15 @@ export const SignupForm = () => {
                   updateSignupFormData("lastName", e.target.value);
                 }}
                 onBlur={handleBlur}
-                error={touched.lastName && Boolean(errors.lastName)}
-                messageType={{
-                  type: errors,
-                  message: touched.lastName && errors.lastName,
-                }}
+                error={touched.lastName ? errors.lastName : undefined}
+                messageType={
+                  touched.lastName && errors.lastName
+                    ? {
+                        type: "error",
+                        message: errors.lastName,
+                      }
+                    : undefined
+                }
               />
             </div>
             <TextField
@@ -87,11 +95,15 @@ export const SignupForm = () => {
                 updateSignupFormData("email", e.target.value);
               }}
               onBlur={handleBlur}
-              error={touched.email && Boolean(errors.email)}
-              messageType={{
-                type: errors,
-                message: touched.email && errors.email,
-              }}
+              error={touched.email ? errors.email : undefined}
+              messageType={
+                touched.email && errors.email
+                  ? {
+                      type: "error",
+                      message: errors.email,
+                    }
+                  : undefined
+              }
             />
             <TextField
               id="Password"
@@ -114,11 +126,15 @@ export const SignupForm = () => {
                 )
               }
               onBlur={handleBlur}
-              error={touched.passwprd && Boolean(errors.password)}
-              messageType={{
-                type: errors,
-                message: touched.password && errors.password,
-              }}
+              error={touched.password ? errors.password : undefined}
+              messageType={
+                touched.password && errors.password
+                  ? {
+                      type: "error",
+                      message: errors.password,
+                    }
+                  : undefined
+              }
             />
 
             <TextField
@@ -142,11 +158,17 @@ export const SignupForm = () => {
                   <BsEyeSlash onClick={() => setTextType("text")} />
                 )
               }
-              error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-              messageType={{
-                type: errors,
-                message: touched.confirmPassword && errors.confirmPassword,
-              }}
+              error={
+                touched.confirmPassword ? errors.confirmPassword : undefined
+              }
+              messageType={
+                touched.confirmPassword && errors.confirmPassword
+                  ? {
+                      type: "error",
+                      message: errors.confirmPassword,
+                    }
+                  : undefined
+              }
             />
 
             <Button text="Register" className="mt-10" disabled={!isValid} />

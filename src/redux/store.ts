@@ -7,12 +7,14 @@ import tableSlice from "./slices/table/tableSlice";
 import dummySlice from "./slices/dummy/dummySlice";
 import cartSlice from "./slices/cartSlice";
 import wishlistSlice from "./slices/wishlistSlice";
+import dataSlice from "./slices/dataSlice";
 
 const rootReducer = combineReducers({
   dummy: dummySlice,
   table: tableSlice,
   cart: cartSlice,
   wishList: wishlistSlice,
+  data: dataSlice,
   //   [api.reducerPath]: api.reducer,
 });
 

@@ -42,11 +42,15 @@ export const LoginForm = () => {
                 updateLoginFormData("email", e.target.value);
               }}
               onBlur={handleBlur}
-              error={touched.email && Boolean(errors.email)}
-              messageType={{
-                type: errors,
-                message: touched.email && errors.email,
-              }}
+              error={touched.email ? errors.email : undefined}
+              messageType={
+                touched.email && errors.email
+                  ? {
+                      type: "error",
+                      message: errors.email,
+                    }
+                  : undefined
+              }
             />
 
             <TextField
@@ -63,11 +67,15 @@ export const LoginForm = () => {
               fieldHasBorder
               className="bg-transparent border border-[var(--neutral-border)]"
               onBlur={handleBlur}
-              error={touched.passwprd && Boolean(errors.password)}
-              messageType={{
-                type: errors,
-                message: touched.password && errors.password,
-              }}
+              error={touched.password ? errors.password : undefined}
+              messageType={
+                touched.password && errors.password
+                  ? {
+                      type: "error",
+                      message: errors.password,
+                    }
+                  : undefined
+              }
             />
 
             {/* Remember Me */}

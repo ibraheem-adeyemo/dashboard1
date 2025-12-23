@@ -9,7 +9,8 @@ import ExpensesChart, {
 } from "@/components/ui/cards/ExpensesCard";
 import { BestSellersCard } from "@/components/ui/cards/BestSellersCard";
 import CategoryStatsCard from "@/components/ui/cards/CategoryStatsCard";
-import { categoryData } from "@/redux/store";
+import { selectCategoryData } from "@/redux/slices/dataSlice";
+import { useAppSelector } from "@/hooks/reduxHooks";
 import CreditCardSection from "@/components/ui/cards/CreditCardSection";
 
 const sampleData = [
@@ -22,6 +23,8 @@ const sampleData = [
 ];
 
 const Financials = () => {
+  const categoryData = useAppSelector(selectCategoryData);
+
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
