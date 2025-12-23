@@ -26,7 +26,7 @@ export default function SignupPage() {
   }, [state.isUserLoggedIn, state.info]);
 
   return (
-    <div className="flex items-center  flex-col gap-10">
+    <div className="flex flex-col gap-10">
       <div className="flex flex-col items-center">
         <h2 className="font-bold">Welcome To Smart Cart Dashboard</h2>
         <span className="text-sm">
